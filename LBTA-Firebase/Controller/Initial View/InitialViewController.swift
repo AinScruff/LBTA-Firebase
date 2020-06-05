@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  InitialViewController.swift
 //  LBTA-Firebase
 //
 //  Created by Dominique Michael Abejar on 6/4/20.
@@ -8,14 +8,15 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class InitialViewController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        view.backgroundColor = .systemBackground
         
-        view.backgroundColor = .systemRed
+        viewControllers = [LogInViewController()]
+        
     }
-
-
+    
 }
-
