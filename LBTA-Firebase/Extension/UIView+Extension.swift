@@ -51,7 +51,17 @@ extension UIView {
         }
     }
     
+    func verticalSpacing(topView: UIView, bottomView: UIView, constant: CGFloat) {
+        
+        topView.translatesAutoresizingMaskIntoConstraints = false
+        bottomView.translatesAutoresizingMaskIntoConstraints = false
+        
+        addConstraint(NSLayoutConstraint(item: bottomView, attribute: .top, relatedBy: .equal, toItem: topView, attribute: .bottom, multiplier: 1.0, constant: constant))
+        
+    }
+    
     func fillSuperView() {
         anchor(top: superview?.topAnchor, leading: superview?.leadingAnchor, bottom: superview?.bottomAnchor, trailing: superview?.trailingAnchor)
     }
+    
 }
