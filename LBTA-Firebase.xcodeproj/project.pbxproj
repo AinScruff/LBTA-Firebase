@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		804E829DCCD06478E8B7A6B2 /* Pods_LBTA_Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDFA8F5C81DBA78113B69A0C /* Pods_LBTA_Firebase.framework */; };
 		87C9AA0E31DD5DCD9FA564BB /* Pods_LBTA_Firebase_LBTA_FirebaseUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83E7EBE001E9EE7F4A2263E1 /* Pods_LBTA_Firebase_LBTA_FirebaseUITests.framework */; };
+		8951D0A92498FF9700B25BC8 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8951D0A82498FF9700B25BC8 /* Utilities.swift */; };
+		8951D0AC24991AC700B25BC8 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8951D0AB24991AC700B25BC8 /* AlertViewController.swift */; };
+		8994686124989C7100AE15FD /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8994686024989C7100AE15FD /* SignUpViewController.swift */; };
 		89A97AE124893A3800DDF070 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A97AE024893A3800DDF070 /* AppDelegate.swift */; };
 		89A97AE324893A3800DDF070 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A97AE224893A3800DDF070 /* SceneDelegate.swift */; };
 		89A97AEB24893A3800DDF070 /* LBTA_Firebase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 89A97AE924893A3800DDF070 /* LBTA_Firebase.xcdatamodeld */; };
@@ -47,6 +50,9 @@
 		71309C6584283580D13441CA /* Pods-LBTA-Firebase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LBTA-Firebase.debug.xcconfig"; path = "Target Support Files/Pods-LBTA-Firebase/Pods-LBTA-Firebase.debug.xcconfig"; sourceTree = "<group>"; };
 		83E7EBE001E9EE7F4A2263E1 /* Pods_LBTA_Firebase_LBTA_FirebaseUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LBTA_Firebase_LBTA_FirebaseUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		872934CEFBA28B7F10F77140 /* Pods-LBTA-Firebase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LBTA-Firebase.release.xcconfig"; path = "Target Support Files/Pods-LBTA-Firebase/Pods-LBTA-Firebase.release.xcconfig"; sourceTree = "<group>"; };
+		8951D0A82498FF9700B25BC8 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		8951D0AB24991AC700B25BC8 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		8994686024989C7100AE15FD /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		89A97ADD24893A3800DDF070 /* LBTA-Firebase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LBTA-Firebase.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		89A97AE024893A3800DDF070 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		89A97AE224893A3800DDF070 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +115,38 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8951D0A72498FF7F00B25BC8 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				8951D0A82498FF9700B25BC8 /* Utilities.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		8951D0AA24991AB500B25BC8 /* Alert View */ = {
+			isa = PBXGroup;
+			children = (
+				8951D0AB24991AC700B25BC8 /* AlertViewController.swift */,
+			);
+			path = "Alert View";
+			sourceTree = "<group>";
+		};
+		8994685E24989C2600AE15FD /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				89AE9450248A7A3A00629B1A /* LogInViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		8994685F24989C4200AE15FD /* Sign Up */ = {
+			isa = PBXGroup;
+			children = (
+				8994686024989C7100AE15FD /* SignUpViewController.swift */,
+			);
+			path = "Sign Up";
+			sourceTree = "<group>";
+		};
 		89A97AD424893A3800DDF070 = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +176,7 @@
 				89A97B1624893B3900DDF070 /* View */,
 				89A97B1524893B2B00DDF070 /* Controller */,
 				89A97B1424893B2100DDF070 /* Extension */,
+				8951D0A72498FF7F00B25BC8 /* Utilities */,
 				89A97B1324893B1D00DDF070 /* Delegate */,
 				89A97AEC24893A3A00DDF070 /* Assets.xcassets */,
 				89A97AEE24893A3A00DDF070 /* LaunchScreen.storyboard */,
@@ -188,7 +227,9 @@
 			isa = PBXGroup;
 			children = (
 				89A97B1A24893D6B00DDF070 /* Initial View */,
-				89AE9450248A7A3A00629B1A /* LogInViewController.swift */,
+				8951D0AA24991AB500B25BC8 /* Alert View */,
+				8994685E24989C2600AE15FD /* Login */,
+				8994685F24989C4200AE15FD /* Sign Up */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -472,7 +513,10 @@
 				89AE9451248A7A3A00629B1A /* LogInViewController.swift in Sources */,
 				89A97B1C24893D8800DDF070 /* InitialViewController.swift in Sources */,
 				89A97B1924893C6400DDF070 /* UIView+Extension.swift in Sources */,
+				8994686124989C7100AE15FD /* SignUpViewController.swift in Sources */,
+				8951D0AC24991AC700B25BC8 /* AlertViewController.swift in Sources */,
 				89A97AE324893A3800DDF070 /* SceneDelegate.swift in Sources */,
+				8951D0A92498FF9700B25BC8 /* Utilities.swift in Sources */,
 				89AE9455248A942300629B1A /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
