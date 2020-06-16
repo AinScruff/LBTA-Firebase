@@ -32,9 +32,8 @@ class LogInViewController: UIViewController {
                                                       attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         et.borderStyle = .none
         et.withImage(direction: .Left, image: #imageLiteral(resourceName: "email"), backgroundColor: .clear, colorSeparator: .clear, colorBorder: .clear)
-        //et.layer.borderColor = UIColor.white.cgColor
-        //et.layer.borderWidth = 1.0
-       
+        et.clearButtonMode = .whileEditing
+        
         return et
     }()
     
@@ -48,8 +47,9 @@ class LogInViewController: UIViewController {
         pt.attributedPlaceholder = NSAttributedString(string: "Password",
                                                       attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         
-        pt.borderStyle = .line
+        pt.borderStyle = .none
         pt.withImage(direction: .Left, image: #imageLiteral(resourceName: "lock"), backgroundColor: .clear, colorSeparator: .clear, colorBorder: .clear)
+        pt.clearButtonMode = .whileEditing
         
         return pt
     }()
@@ -73,7 +73,8 @@ class LogInViewController: UIViewController {
         attributedTitle.append(NSAttributedString(string: "Sign Up", attributes: [NSAttributedString.Key.font: UIFont(name: "Helvetica-Bold", size: 15)!,NSAttributedString.Key.foregroundColor: UIColor.white]))
  
         sb.setAttributedTitle(attributedTitle, for: .normal)
- 
+        sb.addTarget(self, action: #selector(openSignUpView), for: .touchUpInside)
+        
         return sb
     }()
     
@@ -90,7 +91,6 @@ class LogInViewController: UIViewController {
         super.viewWillAppear(animated)
         
         self.navigationController?.isNavigationBarHidden = true
-
     }
     
     override func viewDidLayoutSubviews() {
@@ -144,5 +144,19 @@ extension LogInViewController {
     @objc func DismissKeyboard(){
         view.endEditing(true)
     }
+    
+    @objc private func openSignUpView(sender: UIButton) {
+        let vc = SignUpViewController()
+        
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true, completion: nil)
+    }
 }
+
+/* TO DO
+ - SIGN UP UI
+ - LOG IN FIREBASE
+ - HOME PAGE
+ 
+ */
 
