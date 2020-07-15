@@ -24,6 +24,7 @@
 		89AE9451248A7A3A00629B1A /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AE9450248A7A3A00629B1A /* LogInViewController.swift */; };
 		89AE9453248A84F700629B1A /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AE9452248A84F700629B1A /* UITextField+Extension.swift */; };
 		89AE9455248A942300629B1A /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AE9454248A942300629B1A /* UIColor+Extension.swift */; };
+		89F0355B24BF3DD100B78910 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F0355A24BF3DD100B78910 /* UIImageView+Extension.swift */; };
 		BF7B21D74BB7600B90036A33 /* Pods_LBTA_FirebaseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C1C78F0314F9C902BDCFFE2 /* Pods_LBTA_FirebaseTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +72,7 @@
 		89AE9450248A7A3A00629B1A /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		89AE9452248A84F700629B1A /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		89AE9454248A942300629B1A /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		89F0355A24BF3DD100B78910 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		8C1C78F0314F9C902BDCFFE2 /* Pods_LBTA_FirebaseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LBTA_FirebaseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ED689DF5E0A13F187365F1C /* Pods-LBTA-FirebaseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LBTA-FirebaseTests.release.xcconfig"; path = "Target Support Files/Pods-LBTA-FirebaseTests/Pods-LBTA-FirebaseTests.release.xcconfig"; sourceTree = "<group>"; };
 		BDFA8F5C81DBA78113B69A0C /* Pods_LBTA_Firebase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LBTA_Firebase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -219,6 +221,7 @@
 				89A97B1824893C6400DDF070 /* UIView+Extension.swift */,
 				89AE9452248A84F700629B1A /* UITextField+Extension.swift */,
 				89AE9454248A942300629B1A /* UIColor+Extension.swift */,
+				89F0355A24BF3DD100B78910 /* UIImageView+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -513,6 +516,7 @@
 				89AE9451248A7A3A00629B1A /* LogInViewController.swift in Sources */,
 				89A97B1C24893D8800DDF070 /* InitialViewController.swift in Sources */,
 				89A97B1924893C6400DDF070 /* UIView+Extension.swift in Sources */,
+				89F0355B24BF3DD100B78910 /* UIImageView+Extension.swift in Sources */,
 				8994686124989C7100AE15FD /* SignUpViewController.swift in Sources */,
 				8951D0AC24991AC700B25BC8 /* AlertViewController.swift in Sources */,
 				89A97AE324893A3800DDF070 /* SceneDelegate.swift in Sources */,
