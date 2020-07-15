@@ -33,6 +33,7 @@ class LogInViewController: UIViewController {
         et.borderStyle = .none
         et.withImage(direction: .Left, image: #imageLiteral(resourceName: "email"), backgroundColor: .clear, colorSeparator: .clear, colorBorder: .clear)
         et.clearButtonMode = .whileEditing
+        et.autocapitalizationType = .none
         
         return et
     }()
