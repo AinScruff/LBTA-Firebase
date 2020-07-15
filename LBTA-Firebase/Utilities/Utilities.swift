@@ -27,4 +27,5 @@ class Utilities {
 
         return passwordRegex.evaluate(with: password)
     }
+    
 }
