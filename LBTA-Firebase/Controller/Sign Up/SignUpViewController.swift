@@ -319,6 +319,7 @@ extension SignUpViewController {
                 
                 if Auth.auth().currentUser != nil {
                     Auth.auth().currentUser?.sendEmailVerification { (error) in
+                        
                         if error == nil {
                             self.containerView.endEditing(true)
                             self.dismiss(animated: true, completion: nil)
