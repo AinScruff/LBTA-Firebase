@@ -24,6 +24,7 @@
 		89AE9451248A7A3A00629B1A /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AE9450248A7A3A00629B1A /* LogInViewController.swift */; };
 		89AE9453248A84F700629B1A /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AE9452248A84F700629B1A /* UITextField+Extension.swift */; };
 		89AE9455248A942300629B1A /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AE9454248A942300629B1A /* UIColor+Extension.swift */; };
+		89DF5DDF24CC7D1C008D1DC6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 89DF5DDE24CC7D1C008D1DC6 /* GoogleService-Info.plist */; };
 		89F0355B24BF3DD100B78910 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F0355A24BF3DD100B78910 /* UIImageView+Extension.swift */; };
 		BF7B21D74BB7600B90036A33 /* Pods_LBTA_FirebaseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C1C78F0314F9C902BDCFFE2 /* Pods_LBTA_FirebaseTests.framework */; };
 /* End PBXBuildFile section */
@@ -72,6 +73,7 @@
 		89AE9450248A7A3A00629B1A /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		89AE9452248A84F700629B1A /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		89AE9454248A942300629B1A /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		89DF5DDE24CC7D1C008D1DC6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		89F0355A24BF3DD100B78910 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		8C1C78F0314F9C902BDCFFE2 /* Pods_LBTA_FirebaseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LBTA_FirebaseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ED689DF5E0A13F187365F1C /* Pods-LBTA-FirebaseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LBTA-FirebaseTests.release.xcconfig"; path = "Target Support Files/Pods-LBTA-FirebaseTests/Pods-LBTA-FirebaseTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				89A97B1424893B2100DDF070 /* Extension */,
 				8951D0A72498FF7F00B25BC8 /* Utilities */,
 				89A97B1324893B1D00DDF070 /* Delegate */,
+				89DF5DDD24CC7CF4008D1DC6 /* Google Plist */,
 				89A97AEC24893A3A00DDF070 /* Assets.xcassets */,
 				89A97AEE24893A3A00DDF070 /* LaunchScreen.storyboard */,
 				89A97AF124893A3A00DDF070 /* Info.plist */,
@@ -257,6 +260,14 @@
 				89A97B1B24893D8800DDF070 /* InitialViewController.swift */,
 			);
 			path = "Initial View";
+			sourceTree = "<group>";
+		};
+		89DF5DDD24CC7CF4008D1DC6 /* Google Plist */ = {
+			isa = PBXGroup;
+			children = (
+				89DF5DDE24CC7D1C008D1DC6 /* GoogleService-Info.plist */,
+			);
+			path = "Google Plist";
 			sourceTree = "<group>";
 		};
 		A159C8AA5C5EDBE898160871 /* Pods */ = {
@@ -383,6 +394,7 @@
 			files = (
 				89A97AF024893A3A00DDF070 /* LaunchScreen.storyboard in Resources */,
 				89A97AED24893A3A00DDF070 /* Assets.xcassets in Resources */,
+				89DF5DDF24CC7D1C008D1DC6 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

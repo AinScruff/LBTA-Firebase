@@ -8,17 +8,19 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseStorage
+import FirebaseFirestore
 
 class SignUpViewController: UIViewController {
-
+    
     // MARK: - Properties
     
     // MARK: - View Elements
     
-    private lazy var contentViewSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 20)
-    private lazy var backgroundColor: UIColor = .systemBlue
+    fileprivate lazy var contentViewSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 20)
+    fileprivate lazy var backgroundColor: UIColor = .systemBlue
     
-    private lazy var scrollView: UIScrollView = {
+    fileprivate lazy var scrollView: UIScrollView = {
         let view = UIScrollView(frame: .zero)
         
         view.backgroundColor = self.backgroundColor
@@ -31,7 +33,7 @@ class SignUpViewController: UIViewController {
         return view
     }()
     
-    private lazy var containerView: UIView = {
+    fileprivate lazy var containerView: UIView = {
         let view = UIView()
         
         view.backgroundColor = self.backgroundColor
@@ -40,7 +42,7 @@ class SignUpViewController: UIViewController {
         return view
     }()
     
-    private let backButton: UIButton = {
+    fileprivate let backButton: UIButton = {
         let button = UIButton(type: .system)
         
         button.titleLabel?.font = UIFont(name: "Helvetica-Bold", size: 17)
@@ -51,15 +53,15 @@ class SignUpViewController: UIViewController {
         return button
     }()
     
-    private let imageView: UIImageView = {
+    fileprivate let imageView: UIImageView = {
         let iv = UIImageView(image: #imageLiteral(resourceName: "defaultPP"))
         
         iv.contentMode = .scaleAspectFill
-          
+        
         return iv
     }()
     
-    private let uploadImageButton: UIButton = {
+    fileprivate let uploadImageButton: UIButton = {
         let button = UIButton(type: .system)
         
         button.backgroundColor = .clear
@@ -68,7 +70,7 @@ class SignUpViewController: UIViewController {
         return button
     }()
     
-    private let tapToChangeLabel: UILabel = {
+    fileprivate let tapToChangeLabel: UILabel = {
         let tl = UILabel()
         
         tl.font = UIFont(name: "Helvetica-Bold", size: 13)
@@ -79,7 +81,7 @@ class SignUpViewController: UIViewController {
         return tl
     }()
     
-    private let emailTextField: UITextField = {
+    fileprivate let emailTextField: UITextField = {
         let et = UITextField()
         
         et.font = UIFont(name: "Helvetica", size: 17)
@@ -92,11 +94,11 @@ class SignUpViewController: UIViewController {
         et.withImage(direction: .Left, image: #imageLiteral(resourceName: "email"), backgroundColor: .clear, colorSeparator: .clear, colorBorder: .clear)
         et.clearButtonMode = .whileEditing
         et.autocapitalizationType = .none
-
+        
         return et
     }()
     
-    private let passwordTextField: UITextField = {
+    fileprivate let passwordTextField: UITextField = {
         let pt = UITextField()
         
         pt.font = UIFont(name: "Helvetic", size: 17)
@@ -113,7 +115,7 @@ class SignUpViewController: UIViewController {
         return pt
     }()
     
-    private let nameTextField: UITextField = {
+    fileprivate let nameTextField: UITextField = {
         let nt = UITextField()
         
         nt.font = UIFont(name: "Helvetic", size: 17)
@@ -128,7 +130,7 @@ class SignUpViewController: UIViewController {
         return nt
     }()
     
-    private let signUpButton: UIButton = {
+    fileprivate let signUpButton: UIButton = {
         let sb = UIButton(type: .system)
         
         sb.backgroundColor = UIColor(hex: "#F6820DFF")
@@ -141,7 +143,7 @@ class SignUpViewController: UIViewController {
         return sb
     }()
     
-    private let logInButton: UIButton = {
+    fileprivate let logInButton: UIButton = {
         let lb = UIButton(type: .system)
         let attributedTitle = NSMutableAttributedString(string: "Already have an Account? ", attributes: [NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 15)!, NSAttributedString.Key.foregroundColor: UIColor.white])
         
@@ -153,16 +155,16 @@ class SignUpViewController: UIViewController {
         return lb
     }()
     
- 
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setUpView()
         keyboardHideOnTap()
     }
     
-   
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
@@ -177,7 +179,7 @@ class SignUpViewController: UIViewController {
 // MARK: - Constraints
 extension SignUpViewController {
     
-    private func setUpView() {
+    fileprivate func setUpView() {
         
         view.addSubview(scrollView)
         scrollView.addSubview(containerView)
@@ -188,7 +190,7 @@ extension SignUpViewController {
         containerView.addSubview(imageView)
         imageView.anchor(top: containerView.safeAreaLayoutGuide.topAnchor, paddingTop: 50, width: 100, height: 100)
         imageView.centerAnchor(centerX: containerView.centerXAnchor)
-      
+        
         containerView.addSubview(uploadImageButton)
         uploadImageButton.anchor(top: containerView.safeAreaLayoutGuide.topAnchor, paddingTop: 50, width: 100, height: 100)
         uploadImageButton.centerAnchor(centerX: containerView.centerXAnchor)
@@ -197,7 +199,7 @@ extension SignUpViewController {
         containerView.verticalSpacing(topView: imageView, bottomView: tapToChangeLabel, constant: 10)
         tapToChangeLabel.anchor(width: 100, height: 20)
         tapToChangeLabel.centerAnchor(centerX: containerView.centerXAnchor)
-            
+        
         containerView.addSubview(nameTextField)
         containerView.verticalSpacing(topView: tapToChangeLabel, bottomView: nameTextField, constant: 15)
         nameTextField.anchor(width: 250, height: 40)
@@ -229,21 +231,13 @@ extension SignUpViewController {
 // MARK: - Methods
 extension SignUpViewController {
     
-    private func keyboardHideOnTap() {
+    fileprivate func keyboardHideOnTap() {
         let Tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(DismissKeyboard))
         containerView.addGestureRecognizer(Tap)
     }
-    
-    @objc func DismissKeyboard(){
-        containerView.endEditing(true)
-    }
-    
-    @objc private func dismissView(sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    private func validateTextFields() -> String? {
-    
+
+    fileprivate func validateTextFields() -> String? {
+        
         if nameTextField.text?.trimmingCharacters(in: .whitespaces) == "" {
             return "Name is required!"
         }
@@ -261,47 +255,112 @@ extension SignUpViewController {
         }
         
         if Utilities.isPasswordValid(passwordTextField.text!) == false {
-            return "Password should contain atleast one uppercase letter and atleast one number."
+            return "Password should contain atleast one uppercase letter, atleast one number and it should be atleast 6 characters long"
         }
         
         return nil
     }
     
-     @objc private func signUp(sender: UIButton) {
-        
-        if validateTextFields() == nil{
-            /* Sign Up Method */
-            Auth.auth().createUser(withEmail: "", password: "") { (result, err) in
-                
-                if err != nil {
-                    self.showError("Error Creating User")
-                } else {
-                    
-                    // User was created Successfully
-                    
-                    
-                }
-            }
-        } else {
-            showError(validateTextFields()!)
-        }
-    }
-    
-    @objc private func uploadImage(sender: UIButton) {
-        showPickerController()
-    }
-    private func showError(_ message: String) {
+    fileprivate func showError(_ message: String) {
         let vc = AlertViewController()
-               
+        
         vc.modalPresentationStyle = .overFullScreen
         vc.modalTransitionStyle = .crossDissolve
         vc.errorMessage = message
         
         self.present(vc, animated: true, completion: nil)
     }
-       
+    
+    fileprivate func createUser(_ email: String, _ password: String, _ name: String) {
+        
+        Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
+            
+            if err != nil {
+                self.showError("Error Creating User")
+            } else {
+                
+                guard let image = self.imageView.image, let data = image.jpegData(compressionQuality: 1.0) else {
+                    self.showError("Please upload Profile Picture")
+                    return
+                }
+                
+                let db = Firestore.firestore()
+                
+                let imageName = UUID().uuidString
+                let imageReference = Storage.storage().reference().child("userProfileImagesFolder").child(imageName)
+                let metadata = StorageMetadata()
+                metadata.contentType = "image/jpeg"
+
+                imageReference.putData(data, metadata: metadata) { (metadata, err) in
+                    
+                    if let err = err {
+                        self.showError(err.localizedDescription)
+                        return
+                    }
+                    
+                    imageReference.downloadURL { (url, err) in
+                        guard let url = url else {
+                            self.showError("Something went wrong")
+                            return
+                        }
+                        
+                        let urlString = url.absoluteString
+                        
+                        db.collection("users").addDocument(data: ["uid": result!.user.uid, "name": name, "imageUrl": urlString, "imageName": imageName]) { (error) in
+                            
+                            if error != nil {
+                                self.showError("Erorr saving user data")
+                            }
+                            
+                        }
+                    }
+                    
+                }
+                
+                if Auth.auth().currentUser != nil {
+                    Auth.auth().currentUser?.sendEmailVerification { (error) in
+                        if error == nil {
+                            self.containerView.endEditing(true)
+                            self.dismiss(animated: true, completion: nil)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
 }
 
+// MARK: - Button Methods
+extension SignUpViewController {
+    
+    @objc fileprivate func DismissKeyboard(){
+        containerView.endEditing(true)
+    }
+    
+    @objc fileprivate func dismissView(sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc fileprivate func uploadImage(sender: UIButton) {
+        showPickerController()
+    }
+
+    @objc fileprivate func signUp(sender: UIButton) {
+        
+        if validateTextFields() == nil{
+            
+            let name = nameTextField.text!
+            let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            
+            createUser(email, password, name)
+        } else {
+            showError(validateTextFields()!)
+        }
+    }
+ 
+}
 // MARK: - TextField Delegate
 extension SignUpViewController: UITextFieldDelegate {
     
@@ -313,7 +372,7 @@ extension SignUpViewController: UITextFieldDelegate {
             let allowedCharacter = CharacterSet.letters
             let allowedCharacter1 = CharacterSet.whitespaces
             let characterSet = CharacterSet(charactersIn: string)
-               
+            
             return allowedCharacter.isSuperset(of: characterSet) || allowedCharacter1.isSuperset(of: characterSet)
         }
         
@@ -324,7 +383,7 @@ extension SignUpViewController: UITextFieldDelegate {
 // MARK: - ImagePicker Delegate
 extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    private func showPickerController() {
+    fileprivate func showPickerController() {
         let imagePickerController = UIImagePickerController()
         
         imagePickerController.delegate = self

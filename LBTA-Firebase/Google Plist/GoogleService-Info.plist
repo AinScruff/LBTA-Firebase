@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>338701173716-7ej7hqda3p81p3c1ojacn2dnu0o4f27h.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.338701173716-7ej7hqda3p81p3c1ojacn2dnu0o4f27h</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBv-oSVrUKF7o9rDcV1cU2k0LbhkLo3xDg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>338701173716</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.NinjaTuna.LBTA-Firebase</string>
+	<key>PROJECT_ID</key>
+	<string>chat-practice-d3eef</string>
+	<key>STORAGE_BUCKET</key>
+	<string>chat-practice-d3eef.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:338701173716:ios:af52182bd222ba55fa4c41</string>
+	<key>DATABASE_URL</key>
+	<string>https://chat-practice-d3eef.firebaseio.com</string>
+</dict>
+</plist>
