@@ -12,6 +12,7 @@
 		8951D0A92498FF9700B25BC8 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8951D0A82498FF9700B25BC8 /* Utilities.swift */; };
 		8951D0AC24991AC700B25BC8 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8951D0AB24991AC700B25BC8 /* AlertViewController.swift */; };
 		8994686124989C7100AE15FD /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8994686024989C7100AE15FD /* SignUpViewController.swift */; };
+		899E655824D8572400B5D64A /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899E655724D8572400B5D64A /* ChatViewController.swift */; };
 		89A97AE124893A3800DDF070 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A97AE024893A3800DDF070 /* AppDelegate.swift */; };
 		89A97AE324893A3800DDF070 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A97AE224893A3800DDF070 /* SceneDelegate.swift */; };
 		89A97AEB24893A3800DDF070 /* LBTA_Firebase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 89A97AE924893A3800DDF070 /* LBTA_Firebase.xcdatamodeld */; };
@@ -24,6 +25,7 @@
 		89AE9451248A7A3A00629B1A /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AE9450248A7A3A00629B1A /* LogInViewController.swift */; };
 		89AE9453248A84F700629B1A /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AE9452248A84F700629B1A /* UITextField+Extension.swift */; };
 		89AE9455248A942300629B1A /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AE9454248A942300629B1A /* UIColor+Extension.swift */; };
+		89C3132F24D8544300143E48 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C3132E24D8544300143E48 /* TabBarViewController.swift */; };
 		89DF5DDF24CC7D1C008D1DC6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 89DF5DDE24CC7D1C008D1DC6 /* GoogleService-Info.plist */; };
 		89F0355B24BF3DD100B78910 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F0355A24BF3DD100B78910 /* UIImageView+Extension.swift */; };
 		BF7B21D74BB7600B90036A33 /* Pods_LBTA_FirebaseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C1C78F0314F9C902BDCFFE2 /* Pods_LBTA_FirebaseTests.framework */; };
@@ -55,6 +57,7 @@
 		8951D0A82498FF9700B25BC8 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		8951D0AB24991AC700B25BC8 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		8994686024989C7100AE15FD /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		899E655724D8572400B5D64A /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		89A97ADD24893A3800DDF070 /* LBTA-Firebase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LBTA-Firebase.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		89A97AE024893A3800DDF070 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		89A97AE224893A3800DDF070 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +76,7 @@
 		89AE9450248A7A3A00629B1A /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		89AE9452248A84F700629B1A /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		89AE9454248A942300629B1A /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		89C3132E24D8544300143E48 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		89DF5DDE24CC7D1C008D1DC6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		89F0355A24BF3DD100B78910 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		8C1C78F0314F9C902BDCFFE2 /* Pods_LBTA_FirebaseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LBTA_FirebaseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,6 +126,7 @@
 		8951D0A72498FF7F00B25BC8 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				89A97B1424893B2100DDF070 /* Extension */,
 				8951D0A82498FF9700B25BC8 /* Utilities.swift */,
 			);
 			path = Utilities;
@@ -149,6 +154,14 @@
 				8994686024989C7100AE15FD /* SignUpViewController.swift */,
 			);
 			path = "Sign Up";
+			sourceTree = "<group>";
+		};
+		899E655624D8570B00B5D64A /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				899E655724D8572400B5D64A /* ChatViewController.swift */,
+			);
+			path = Chat;
 			sourceTree = "<group>";
 		};
 		89A97AD424893A3800DDF070 = {
@@ -179,7 +192,6 @@
 				89A97B1724893B3C00DDF070 /* Model */,
 				89A97B1624893B3900DDF070 /* View */,
 				89A97B1524893B2B00DDF070 /* Controller */,
-				89A97B1424893B2100DDF070 /* Extension */,
 				8951D0A72498FF7F00B25BC8 /* Utilities */,
 				89A97B1324893B1D00DDF070 /* Delegate */,
 				89DF5DDD24CC7CF4008D1DC6 /* Google Plist */,
@@ -236,6 +248,8 @@
 				8951D0AA24991AB500B25BC8 /* Alert View */,
 				8994685E24989C2600AE15FD /* Login */,
 				8994685F24989C4200AE15FD /* Sign Up */,
+				89C3132B24D8538100143E48 /* Main View  */,
+				899E655624D8570B00B5D64A /* Chat */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -260,6 +274,14 @@
 				89A97B1B24893D8800DDF070 /* InitialViewController.swift */,
 			);
 			path = "Initial View";
+			sourceTree = "<group>";
+		};
+		89C3132B24D8538100143E48 /* Main View  */ = {
+			isa = PBXGroup;
+			children = (
+				89C3132E24D8544300143E48 /* TabBarViewController.swift */,
+			);
+			path = "Main View ";
 			sourceTree = "<group>";
 		};
 		89DF5DDD24CC7CF4008D1DC6 /* Google Plist */ = {
@@ -532,6 +554,8 @@
 				8994686124989C7100AE15FD /* SignUpViewController.swift in Sources */,
 				8951D0AC24991AC700B25BC8 /* AlertViewController.swift in Sources */,
 				89A97AE324893A3800DDF070 /* SceneDelegate.swift in Sources */,
+				899E655824D8572400B5D64A /* ChatViewController.swift in Sources */,
+				89C3132F24D8544300143E48 /* TabBarViewController.swift in Sources */,
 				8951D0A92498FF9700B25BC8 /* Utilities.swift in Sources */,
 				89AE9455248A942300629B1A /* UIColor+Extension.swift in Sources */,
 			);
