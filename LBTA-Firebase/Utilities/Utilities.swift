@@ -10,6 +10,7 @@ import UIKit
 
 class Utilities {
 
+    // Check Email Format if Valid
     static func isEmailValid(_ email: String) -> Bool {
         let emailRegex = NSPredicate(format: "SELF MATCHES %@", "(?:[\\p{L}0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[\\p{L}0-9!#$%\\&'*+/=?\\^_`{|}" +
         "~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\" +
@@ -22,10 +23,24 @@ class Utilities {
         return emailRegex.evaluate(with: email)
     }
     
+    // Check Password Regex 
     static func isPasswordValid(_ password: String) -> Bool {
         let passwordRegex = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[A-Z])(?=.*[0-9]).{6,}$")
 
         return passwordRegex.evaluate(with: password)
+    }
+    
+    
+    // Show Error Message
+    static func showErrorView(title: String, message: String) -> UIViewController {
+        let vc = AlertViewController()
+        
+        vc.modalPresentationStyle = .overFullScreen
+        vc.modalTransitionStyle = .crossDissolve
+        vc.titleMessage = title
+        vc.errorMessage = message
+        
+        return vc
     }
     
 }
