@@ -261,22 +261,18 @@ extension SignUpViewController {
         return nil
     }
     
+    // Present Error Alert View
     fileprivate func showError(_ message: String) {
-        let vc = AlertViewController()
-        
-        vc.modalPresentationStyle = .overFullScreen
-        vc.modalTransitionStyle = .crossDissolve
-        vc.errorMessage = message
-        
-        self.present(vc, animated: true, completion: nil)
+        self.present(Utilities.showErrorView(title: "Register Error", message: message), animated: true, completion: nil)
     }
     
+    // Create User
     fileprivate func createUser(_ email: String, _ password: String, _ name: String) {
         
         Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
             
             if err != nil {
-                self.showError("Error Creating User")
+                self.showError("Error Adding to DB")
             } else {
                 
                 guard let image = self.imageView.image, let data = image.jpegData(compressionQuality: 1.0) else {
@@ -300,7 +296,7 @@ extension SignUpViewController {
                     
                     imageReference.downloadURL { (url, err) in
                         guard let url = url else {
-                            self.showError("Something went wrong")
+                            self.showError("Something Went Wrong")
                             return
                         }
                         
@@ -309,7 +305,7 @@ extension SignUpViewController {
                         db.collection("users").addDocument(data: ["uid": result!.user.uid, "name": name, "imageUrl": urlString, "imageName": imageName]) { (error) in
                             
                             if error != nil {
-                                self.showError("Erorr saving user data")
+                                self.showError("Error Saving User data")
                             }
                             
                         }
@@ -357,7 +353,7 @@ extension SignUpViewController {
             
             createUser(email, password, name)
         } else {
-            showError(validateTextFields()!)
+            self.showError(validateTextFields()!)
         }
     }
  
