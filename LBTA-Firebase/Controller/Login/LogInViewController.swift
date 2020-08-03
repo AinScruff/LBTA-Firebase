@@ -11,9 +11,12 @@ import FirebaseAuth
 
 class LogInViewController: UIViewController {
 
+    // MARK: - Properties
+    
+
     // MARK: - View Elements
     
-    private let imageView: UIImageView = {
+    fileprivate let imageView: UIImageView = {
         let iv = UIImageView(image: #imageLiteral(resourceName: "firebase"))
         
         iv.contentMode = .scaleAspectFit
@@ -21,7 +24,7 @@ class LogInViewController: UIViewController {
         return iv
     }()
     
-    private let emailTextField: UITextField = {
+    fileprivate let emailTextField: UITextField = {
         let et = UITextField()
         
         et.font = UIFont(name: "Helvetica", size: 17)
@@ -38,7 +41,7 @@ class LogInViewController: UIViewController {
         return et
     }()
     
-    private let passwordTextField: UITextField = {
+    fileprivate let passwordTextField: UITextField = {
         let pt = UITextField()
         
         pt.font = UIFont(name: "Helvetic", size: 17)
@@ -55,7 +58,7 @@ class LogInViewController: UIViewController {
         return pt
     }()
     
-    private let logInButton: UIButton = {
+    fileprivate let logInButton: UIButton = {
         let lb = UIButton(type: .system)
         
         lb.backgroundColor = UIColor(hex: "#F6820DFF")
@@ -63,11 +66,12 @@ class LogInViewController: UIViewController {
         lb.titleLabel?.font = UIFont(name: "Helvetica", size: 17)
         lb.setTitleColor(.white, for: .normal)
         lb.setTitle("Log In", for: .normal)
+        lb.addTarget(self, action: #selector(logIn), for: .touchUpInside)
         
         return lb
     }()
     
-    private let signUpButton: UIButton = {
+    fileprivate let signUpButton: UIButton = {
         let sb = UIButton(type: .system)
         let attributedTitle = NSMutableAttributedString(string: "Don't Have an Account? ", attributes: [NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 15)!, NSAttributedString.Key.foregroundColor: UIColor.white])
         
@@ -105,7 +109,7 @@ class LogInViewController: UIViewController {
 // MARK: - Contraints
 extension LogInViewController {
     
-    private func setUpView() {
+    fileprivate func setUpView() {
         view.backgroundColor = .systemBlue
         
         view.addSubview(imageView)
@@ -137,27 +141,79 @@ extension LogInViewController {
 // MARK: - Methods
 extension LogInViewController {
     
-    private func keyboardHideOnTap() {
+    fileprivate func keyboardHideOnTap() {
         let Tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(DismissKeyboard))
         view.addGestureRecognizer(Tap)
     }
     
-    @objc func DismissKeyboard(){
+    fileprivate func validateTextField() -> String? {
+        
+        if emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+            return "Email is required!"
+        }
+        
+        if passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+            return "Password is required!"
+        }
+        
+        return nil
+    }
+    
+    fileprivate func showError(message: String) {
+        self.present(Utilities.showErrorView(title: "Log In Error", message: message), animated: true, completion: nil)
+    }
+}
+
+// MARK: - Button Methods
+extension LogInViewController {
+ 
+    @objc fileprivate func DismissKeyboard(){
         view.endEditing(true)
     }
     
-    @objc private func openSignUpView(sender: UIButton) {
+    @objc fileprivate func openSignUpView(sender: UIButton) {
         let vc = SignUpViewController()
         
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion: nil)
     }
+    
+    @objc fileprivate func logIn(sender: UIButton) {
+        
+        UIView.transition(with: sender, duration: 0.1, options: .curveEaseInOut, animations: {
+            sender.backgroundColor = .systemGray
+            sender.isEnabled = false
+        })
+        
+        if validateTextField() == nil {
+            
+            let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            
+            Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
+                
+                UIView.transition(with: sender, duration: 0.1, options: .curveEaseInOut, animations: {
+                                       sender.backgroundColor = UIColor(hex: "#F6820DFF")
+                                       sender.isEnabled = true
+                })
+                
+                if error != nil {
+                    // Couldn't Sign In
+                    self.showError(message: "Invalid Email or Password!")
+                } else {
+                    // Sign In Successful
+                    let vc = ChatViewController()
+                    vc.modalPresentationStyle = .fullScreen
+                    self.present(vc, animated: false, completion: nil)
+                }
+            }
+        } else {
+            self.showError(message: validateTextField()!)
+            UIView.transition(with: sender, duration: 0.1, options: .curveEaseInOut, animations: {
+                                   sender.backgroundColor = UIColor(hex: "#F6820DFF")
+                                   sender.isEnabled = true
+            })
+        }
+    
+    }
 }
-
-/* TO DO
- - SIGN UP UI
- - LOG IN FIREBASE
- - HOME PAGE
- 
- */
-
