@@ -14,6 +14,15 @@ class AlertViewController: UIViewController {
 
     private let alertViewHeight: CGFloat = 150
     
+    var titleMessage: String? {
+        didSet {
+            guard let message = titleMessage else {
+                return
+            }
+            alertLabel.text = message
+        }
+    }
+    
     var errorMessage: String? {
         didSet {
             guard let err = errorMessage else {
@@ -34,8 +43,7 @@ class AlertViewController: UIViewController {
         let al = UILabel()
         
         al.textColor = .white
-        al.font = UIFont(name: "Helvetica-Bold", size: 17)
-        al.text = "Register Error"
+        al.font = UIFont(name: "Helvetica-Bold", size: 19)
         al.textAlignment = .center
         
         return al
@@ -48,11 +56,11 @@ class AlertViewController: UIViewController {
         el.font = UIFont(name: "Helvetica", size: 17)
         el.textAlignment = .center
         el.numberOfLines = 0
-        
+      
         return el
     }()
     
-    private let dismissButton: UIButton = {
+    private lazy var dismissButton: UIButton = {
         
         let bb = UIButton(type: .system)
     
@@ -99,7 +107,8 @@ extension AlertViewController {
         alertLabel.anchor(leading: view.leadingAnchor, trailing: view.trailingAnchor, height: 40)
     
         alertView.addSubview(errorLabel)
-        errorLabel.anchor(top: alertView.topAnchor, leading: alertView.leadingAnchor, bottom: alertView.bottomAnchor, trailing: alertView.trailingAnchor, paddingTop: alertViewHeight / 2)
+        alertView.verticalSpacing(topView: navBarView, bottomView: errorLabel, constant: 0)
+        errorLabel.anchor(leading: alertView.leadingAnchor, bottom: alertView.bottomAnchor, trailing: alertView.trailingAnchor)
        
     }
 
@@ -109,6 +118,7 @@ extension AlertViewController {
 extension AlertViewController {
 
     @objc private func dismissView(sender: UIButton) {
+        print("asdasdadas")
         self.dismiss(animated: true, completion: nil)
     }
 }
