@@ -302,12 +302,15 @@ extension SignUpViewController {
                         
                         let urlString = url.absoluteString
                         
-                        db.collection("users").addDocument(data: ["uid": result!.user.uid, "name": name, "imageUrl": urlString, "imageName": imageName]) { (error) in
-                            
-                            if error != nil {
+                        db.collection("users").document(result!.user.uid).setData([
+                            "name": name,
+                            "imageUrl": urlString,
+                            "imageName": imageName,
+                            "uid": result!.user.uid
+                        ]) { (err) in
+                            if err != nil {
                                 self.showError("Error Saving User data")
                             }
-                            
                         }
                     }
                     
@@ -318,7 +321,10 @@ extension SignUpViewController {
                         
                         if error == nil {
                             self.containerView.endEditing(true)
-                            self.dismiss(animated: true, completion: nil)
+                            
+                            let vc = TabBarViewController()
+                            vc.modalPresentationStyle = .fullScreen
+                            self.present(vc, animated: false, completion: nil)
                         }
                     }
                 }
