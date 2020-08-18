@@ -118,7 +118,6 @@ extension AlertViewController {
 extension AlertViewController {
 
     @objc private func dismissView(sender: UIButton) {
-        print("asdasdadas")
         self.dismiss(animated: true, completion: nil)
     }
 }
