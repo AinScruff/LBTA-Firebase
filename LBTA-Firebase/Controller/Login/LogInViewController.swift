@@ -180,6 +180,10 @@ extension LogInViewController {
     
     @objc fileprivate func logIn(sender: UIButton) {
         
+        // Deselect selected textField
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+        
         UIView.transition(with: sender, duration: 0.1, options: .curveEaseInOut, animations: {
             sender.backgroundColor = .systemGray
             sender.isEnabled = false
@@ -202,7 +206,7 @@ extension LogInViewController {
                     self.showError(message: "Invalid Email or Password!")
                 } else {
                     // Sign In Successful
-                    let vc = ChatViewController()
+                    let vc = TabBarViewController()
                     vc.modalPresentationStyle = .fullScreen
                     self.present(vc, animated: false, completion: nil)
                 }
