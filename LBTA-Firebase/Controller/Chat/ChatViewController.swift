@@ -13,8 +13,20 @@ class ChatViewController: UIViewController {
     
     // MARK: - Properties
     let cellId = "cell"
-    let services = ServicesAPI()
+    let userID = Constants.API.AUTH_REF.currentUser?.uid
     var user = [User]()
+    
+    let services: ServicesAPI
+    
+    init(services: ServicesAPI) {
+        self.services = services
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - View Elements
     let tableView: UITableView = {
         let table = UITableView(frame: .zero, style: .plain)
@@ -37,13 +49,13 @@ class ChatViewController: UIViewController {
         
         configureNavBar()
         configureTableView()
-        fetchUsers()
+        fetchUsers(userID)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        tableView.tableFooterView = tableFooter
+        //tableView.tableFooterView = tableFooter
     }
     
 }
@@ -74,17 +86,18 @@ extension ChatViewController {
     fileprivate func registerCells() {
         tableView.register(UserChatTableViewCell.self, forCellReuseIdentifier: cellId)
     }
-  
+    
 }
 
 // MARK: - Methods
 extension ChatViewController {
-
-    fileprivate func fetchUsers() {
-        services.fetchFriendData { (user) in
+    
+    fileprivate func fetchUsers(_ userID: String?) {
+        services.fetchFriendData(userID: userID) { (user) in
             self.user.append(user)
             
             self.tableView.reloadData()
         }
+        
     }
 }
