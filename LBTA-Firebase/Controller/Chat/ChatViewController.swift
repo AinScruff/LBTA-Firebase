@@ -83,7 +83,7 @@ extension ChatViewController {
     fileprivate func fetchUsers() {
         services.fetchFriendData { (user) in
             self.user.append(user)
-     
+            
             self.tableView.reloadData()
         }
     }
