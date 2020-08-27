@@ -16,6 +16,8 @@
 		8950149224F7EF3900FF46C6 /* SignUpValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8950149124F7EF3900FF46C6 /* SignUpValidationService.swift */; };
 		8950149524F7F1CC00FF46C6 /* EnumConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8950149424F7F1CC00FF46C6 /* EnumConstant.swift */; };
 		8950149724F7F9EC00FF46C6 /* LogInValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8950149624F7F9EC00FF46C6 /* LogInValidationService.swift */; };
+		8950149A24F8041500FF46C6 /* AppConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8950149924F8041500FF46C6 /* AppConstant.swift */; };
+		8950149E24F814B300FF46C6 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8950149D24F814B300FF46C6 /* ProfileTableViewController.swift */; };
 		8951D0A92498FF9700B25BC8 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8951D0A82498FF9700B25BC8 /* Utilities.swift */; };
 		8951D0AC24991AC700B25BC8 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8951D0AB24991AC700B25BC8 /* AlertViewController.swift */; };
 		8994686124989C7100AE15FD /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8994686024989C7100AE15FD /* SignUpViewController.swift */; };
@@ -69,6 +71,8 @@
 		8950149124F7EF3900FF46C6 /* SignUpValidationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpValidationService.swift; sourceTree = "<group>"; };
 		8950149424F7F1CC00FF46C6 /* EnumConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumConstant.swift; sourceTree = "<group>"; };
 		8950149624F7F9EC00FF46C6 /* LogInValidationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInValidationService.swift; sourceTree = "<group>"; };
+		8950149924F8041500FF46C6 /* AppConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstant.swift; sourceTree = "<group>"; };
+		8950149D24F814B300FF46C6 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		8951D0A82498FF9700B25BC8 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		8951D0AB24991AC700B25BC8 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		8994686024989C7100AE15FD /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -160,6 +164,7 @@
 		8950149324F7F1BD00FF46C6 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
+				8950149924F8041500FF46C6 /* AppConstant.swift */,
 				8950149424F7F1CC00FF46C6 /* EnumConstant.swift */,
 			);
 			path = Constants;
@@ -171,6 +176,14 @@
 				89206A2C24EA893D009C2323 /* ServicesAPI.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		8950149C24F8149D00FF46C6 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				8950149D24F814B300FF46C6 /* ProfileTableViewController.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		8951D0A72498FF7F00B25BC8 /* Utilities */ = {
@@ -242,11 +255,11 @@
 		89A97ADF24893A3800DDF070 /* LBTA-Firebase */ = {
 			isa = PBXGroup;
 			children = (
-				8950149824F8006A00FF46C6 /* API */,
 				89A97B1724893B3C00DDF070 /* Model */,
 				89A97B1624893B3900DDF070 /* View */,
 				89A97B1524893B2B00DDF070 /* Controller */,
 				8951D0A72498FF7F00B25BC8 /* Utilities */,
+				8950149824F8006A00FF46C6 /* API */,
 				89A97B1324893B1D00DDF070 /* Application Delegate */,
 				89DF5DDD24CC7CF4008D1DC6 /* Google Plist */,
 				89A97AEC24893A3A00DDF070 /* Assets.xcassets */,
@@ -298,12 +311,13 @@
 		89A97B1524893B2B00DDF070 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				89A97B1A24893D6B00DDF070 /* Initial View */,
 				8951D0AA24991AB500B25BC8 /* Alert View */,
+				89A97B1A24893D6B00DDF070 /* Initial View */,
+				89C3132B24D8538100143E48 /* Main View  */,
 				8994685E24989C2600AE15FD /* Login */,
 				8994685F24989C4200AE15FD /* Sign Up */,
-				89C3132B24D8538100143E48 /* Main View  */,
 				899E655624D8570B00B5D64A /* Chat */,
+				8950149C24F8149D00FF46C6 /* Profile */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -606,10 +620,12 @@
 				89206A2B24EA6CC6009C2323 /* UserChatTableViewCell.swift in Sources */,
 				89AE9453248A84F700629B1A /* UITextField+Extension.swift in Sources */,
 				89AE9451248A7A3A00629B1A /* LogInViewController.swift in Sources */,
+				8950149E24F814B300FF46C6 /* ProfileTableViewController.swift in Sources */,
 				89206A2924EA5AB3009C2323 /* User.swift in Sources */,
 				89A97B1C24893D8800DDF070 /* InitialViewController.swift in Sources */,
 				8950149524F7F1CC00FF46C6 /* EnumConstant.swift in Sources */,
 				89F6023724F166F70053CA7F /* ValidationService.swift in Sources */,
+				8950149A24F8041500FF46C6 /* AppConstant.swift in Sources */,
 				8950149724F7F9EC00FF46C6 /* LogInValidationService.swift in Sources */,
 				89206A2724EA5981009C2323 /* ChatViewController+UITableView.swift in Sources */,
 				8950149224F7EF3900FF46C6 /* SignUpValidationService.swift in Sources */,
