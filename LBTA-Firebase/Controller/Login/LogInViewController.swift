@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import KeychainSwift
 
 class LogInViewController: UIViewController {
     
@@ -41,7 +42,6 @@ class LogInViewController: UIViewController {
         
         et.font = UIFont(name: "Helvetica", size: 17)
         et.textColor = .white
-        //et.delegate = self
         et.keyboardType = .emailAddress
         et.attributedPlaceholder = NSAttributedString(string: "Email",
                                                       attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
@@ -107,7 +107,6 @@ class LogInViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationController?.isNavigationBarHidden = true
     }
     
     override func viewDidLayoutSubviews() {
@@ -178,6 +177,11 @@ extension LogInViewController {
             sender.isEnabled = true
         })
     }
+    
+    fileprivate func saveToKeyChain(_ email: String, _ password: String) {
+        Constants.Keys.KEYCHAIN_REF.set(email, forKey: Constants.Keys.EMAIL, withAccess: .accessibleWhenUnlocked)
+        Constants.Keys.KEYCHAIN_REF.set(password, forKey: Constants.Keys.PASSWORD, withAccess: .accessibleWhenUnlocked)
+    }
 }
 
 // MARK: - Button Methods
@@ -217,10 +221,11 @@ extension LogInViewController {
                 })
                 
                 if error != nil {
-                    // Couldn't Sign In
                     self.showError(message: "Invalid Email or Password!", sender: sender)
                 } else {
-                    // Sign In Successful
+                    self.saveToKeyChain(email, password)
+                    self.emailTextField.text?.removeAll()
+                    self.passwordTextField.text?.removeAll()
                     let vc = TabBarViewController()
                     vc.modalPresentationStyle = .fullScreen
                     self.present(vc, animated: false, completion: nil)
