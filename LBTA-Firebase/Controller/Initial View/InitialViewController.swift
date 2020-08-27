@@ -7,16 +7,23 @@
 //
 
 import UIKit
+import Firebase
 
 class InitialViewController: UINavigationController {
 
+    // MARK: - Properties
+    var vc = UIViewController()
+    let validation = LogInValidationService.shared
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = .systemBackground
         
-        viewControllers = [LogInViewController()]
-        
+        // Log in user using keychain
+        viewControllers = [LogInViewController(validation: validation)]
     }
     
+    // MARK: - Methods
 }
