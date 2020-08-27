@@ -10,17 +10,29 @@ import UIKit
 import FirebaseAuth
 
 class LogInViewController: UIViewController {
-
+    
     // MARK: - Properties
     
-
+    private let validation: LogInValidationService
+    
+    // MARK: - Initialization
+    
+    init(validation: LogInValidationService) {
+        self.validation = validation
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - View Elements
     
     fileprivate let imageView: UIImageView = {
         let iv = UIImageView(image: #imageLiteral(resourceName: "firebase"))
         
         iv.contentMode = .scaleAspectFit
-    
+        
         return iv
     }()
     
@@ -76,7 +88,7 @@ class LogInViewController: UIViewController {
         let attributedTitle = NSMutableAttributedString(string: "Don't Have an Account? ", attributes: [NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 15)!, NSAttributedString.Key.foregroundColor: UIColor.white])
         
         attributedTitle.append(NSAttributedString(string: "Sign Up", attributes: [NSAttributedString.Key.font: UIFont(name: "Helvetica-Bold", size: 15)!,NSAttributedString.Key.foregroundColor: UIColor.white]))
- 
+        
         sb.setAttributedTitle(attributedTitle, for: .normal)
         sb.addTarget(self, action: #selector(openSignUpView), for: .touchUpInside)
         
@@ -87,7 +99,7 @@ class LogInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setUpView()
         keyboardHideOnTap()
     }
@@ -159,14 +171,18 @@ extension LogInViewController {
         return nil
     }
     
-    fileprivate func showError(message: String) {
+    fileprivate func showError(message: String, sender: UIButton) {
         self.present(Utilities.showErrorView(title: "Log In Error", message: message), animated: true, completion: nil)
+        UIView.transition(with: sender, duration: 0.1, options: .curveEaseInOut, animations: {
+            sender.backgroundColor = UIColor(hex: "#F6820DFF")
+            sender.isEnabled = true
+        })
     }
 }
 
 // MARK: - Button Methods
 extension LogInViewController {
- 
+    
     @objc fileprivate func DismissKeyboard(){
         view.endEditing(true)
     }
@@ -189,21 +205,20 @@ extension LogInViewController {
             sender.isEnabled = false
         })
         
-        if validateTextField() == nil {
-            
-            let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            
+        do {
+            let email = try validation.isEmailValid(emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines))
+            let password = try validation.isPasswordValid( passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines))
+                
             Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
                 
                 UIView.transition(with: sender, duration: 0.1, options: .curveEaseInOut, animations: {
-                                       sender.backgroundColor = UIColor(hex: "#F6820DFF")
-                                       sender.isEnabled = true
+                    sender.backgroundColor = UIColor(hex: "#F6820DFF")
+                    sender.isEnabled = true
                 })
                 
                 if error != nil {
                     // Couldn't Sign In
-                    self.showError(message: "Invalid Email or Password!")
+                    self.showError(message: "Invalid Email or Password!", sender: sender)
                 } else {
                     // Sign In Successful
                     let vc = TabBarViewController()
@@ -211,13 +226,9 @@ extension LogInViewController {
                     self.present(vc, animated: false, completion: nil)
                 }
             }
-        } else {
-            self.showError(message: validateTextField()!)
-            UIView.transition(with: sender, duration: 0.1, options: .curveEaseInOut, animations: {
-                                   sender.backgroundColor = UIColor(hex: "#F6820DFF")
-                                   sender.isEnabled = true
-            })
+            
+        } catch {
+            showError(message: error.localizedDescription, sender: sender)
         }
-    
     }
 }
