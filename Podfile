@@ -10,7 +10,8 @@ target 'LBTA-Firebase' do
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'Firebase/Storage'
-  
+  pod 'KeychainSwift', '~> 19.0'
+
   target 'LBTA-FirebaseTests' do
     inherit! :search_paths
     # Pods for testing
