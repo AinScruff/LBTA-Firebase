@@ -10,12 +10,15 @@ import Firebase
 
 class ServicesAPI {
     
-    let userID = Auth.auth().currentUser?.uid
-    let db = Firestore.firestore()
-    var user = [User]()
+    // MARK: - Properties
     
-    func fetchFriendData(completion: @escaping (User) -> Void) {
-        
+    static let shared = ServicesAPI()
+       
+    let db = Constants.API.DB_REF
+   
+    // MARK: - Methods
+    func fetchFriendData(userID: String?, completion: @escaping (User) -> Void) {
+  
         // Check if user is logged in
         if let id = userID {
             // Get Friends
