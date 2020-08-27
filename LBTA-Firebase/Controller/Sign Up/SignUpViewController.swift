@@ -15,6 +15,11 @@ class SignUpViewController: UIViewController {
     
     // MARK: - Properties
     
+    let validation = SignUpValidationService.shared
+    
+    var isViewCollapsed: Bool = false
+    var heightConstraint = NSLayoutConstraint()
+
     // MARK: - View Elements
     
     fileprivate lazy var contentViewSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 20)
@@ -85,8 +90,6 @@ class SignUpViewController: UIViewController {
         let et = UITextField()
         
         et.font = UIFont(name: "Helvetica", size: 17)
-        et.textColor = .white
-        //et.delegate = self
         et.keyboardType = .emailAddress
         et.attributedPlaceholder = NSAttributedString(string: "Email",
                                                       attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
@@ -94,6 +97,7 @@ class SignUpViewController: UIViewController {
         et.withImage(direction: .Left, image: #imageLiteral(resourceName: "email"), backgroundColor: .clear, colorSeparator: .clear, colorBorder: .clear)
         et.clearButtonMode = .whileEditing
         et.autocapitalizationType = .none
+        et.textColor = .white
         
         return et
     }()
@@ -103,7 +107,6 @@ class SignUpViewController: UIViewController {
         
         pt.font = UIFont(name: "Helvetic", size: 17)
         pt.textColor = .white
-        //et.delegate = self
         pt.isSecureTextEntry = true
         pt.attributedPlaceholder = NSAttributedString(string: "Password",
                                                       attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
@@ -111,7 +114,7 @@ class SignUpViewController: UIViewController {
         pt.borderStyle = .none
         pt.withImage(direction: .Left, image: #imageLiteral(resourceName: "lock"), backgroundColor: .clear, colorSeparator: .clear, colorBorder: .clear)
         pt.clearButtonMode = .whileEditing
-        
+     
         return pt
     }()
     
@@ -126,6 +129,7 @@ class SignUpViewController: UIViewController {
         nt.withImage(direction: .Left, image: #imageLiteral(resourceName: "user"), backgroundColor: .clear, colorSeparator: .clear, colorBorder: .clear)
         nt.clearButtonMode = .whileEditing
         nt.autocapitalizationType = .none
+
         
         return nt
     }()
@@ -153,6 +157,14 @@ class SignUpViewController: UIViewController {
         lb.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
         
         return lb
+    }()
+    
+    fileprivate let passwordValidationView: UIView = {
+        let view = UIView()
+        
+        view.backgroundColor = .red
+        view.clipsToBounds = true
+        return view
     }()
     
     
@@ -216,15 +228,29 @@ extension SignUpViewController {
         passwordTextField.anchor(width: 250, height: 40)
         passwordTextField.centerAnchor(centerX: containerView.centerXAnchor)
         
+        containerView.addSubview(passwordValidationView)
+        passwordValidationView.anchor(top: passwordTextField.bottomAnchor, paddingTop: 5, width: 250)
+        heightConstraint = passwordValidationView.heightAnchor.constraint(equalToConstant: 0)
+        heightConstraint.isActive = true
+        passwordValidationView.centerAnchor(centerX: containerView.centerXAnchor)
+        
         containerView.addSubview(signUpButton)
-        containerView.verticalSpacing(topView: passwordTextField, bottomView: signUpButton, constant: 50)
+        containerView.verticalSpacing(topView: passwordValidationView, bottomView: signUpButton, constant: 25)
         signUpButton.anchor(width: 250, height: 40)
         signUpButton.centerAnchor(centerX: containerView.centerXAnchor)
-        
+
         containerView.addSubview(logInButton)
         containerView.verticalSpacing(topView: signUpButton, bottomView: logInButton, constant: 20)
         logInButton.anchor(width: 250, height: 30)
         logInButton.centerAnchor(centerX: containerView.centerXAnchor)
+        
+        textFieldDelegate()
+    }
+    
+    func textFieldDelegate() {
+        nameTextField.delegate = self
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
     }
 }
 
@@ -235,35 +261,14 @@ extension SignUpViewController {
         let Tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(DismissKeyboard))
         containerView.addGestureRecognizer(Tap)
     }
-
-    fileprivate func validateTextFields() -> String? {
-        
-        if nameTextField.text?.trimmingCharacters(in: .whitespaces) == "" {
-            return "Name is required!"
-        }
-        
-        if emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
-            return "Email is required!"
-        }
-        
-        if passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
-            return "Password is required!"
-        }
-        
-        if Utilities.isEmailValid(emailTextField.text!) == false {
-            return "Email Format is Invalid!"
-        }
-        
-        if Utilities.isPasswordValid(passwordTextField.text!) == false {
-            return "Password should contain atleast one uppercase letter, atleast one number and it should be atleast 6 characters long"
-        }
-        
-        return nil
-    }
     
     // Present Error Alert View
     fileprivate func showError(_ message: String) {
         self.present(Utilities.showErrorView(title: "Register Error", message: message), animated: true, completion: nil)
+        UIView.transition(with: signUpButton, duration: 0.1, options: .curveEaseInOut, animations: {
+            self.signUpButton.backgroundColor = UIColor(hex: "#F6820DFF")
+            self.signUpButton.isEnabled = true
+        })
     }
     
     // Create User
@@ -332,6 +337,18 @@ extension SignUpViewController {
         }
     }
     
+    fileprivate func showPasswordValidationView() {
+        
+        let constant: CGFloat = isViewCollapsed ? 150 : 0
+        
+        heightConstraint.constant = constant
+        
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            
+            self.containerView.superview?.layoutIfNeeded()
+        }, completion: nil)
+        
+    }
 }
 
 // MARK: - Button Methods
@@ -351,22 +368,36 @@ extension SignUpViewController {
 
     @objc fileprivate func signUp(sender: UIButton) {
         
-        if validateTextFields() == nil{
+        do {
             
-            let name = nameTextField.text!
-            let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let name = try validation.isNameValid(nameTextField.text!)
+            let email = try validation.isEmailValid(emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines))
+            let password = try validation.isPasswordValid(passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines))
             
             createUser(email, password, name)
-        } else {
-            self.showError(validateTextFields()!)
+        } catch {
+            showError(error.localizedDescription)
         }
     }
- 
 }
 // MARK: - TextField Delegate
 extension SignUpViewController: UITextFieldDelegate {
     
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == passwordTextField {
+            isViewCollapsed = false
+            showPasswordValidationView()
+        }
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == passwordTextField {
+            isViewCollapsed = true
+            showPasswordValidationView()
+        
+        }
+    }
+   
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         if textField == nameTextField {
