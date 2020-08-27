@@ -10,17 +10,19 @@ import UIKit
 
 class TabBarViewController: UITabBarController {
     
+    // MARK: - Properties
+    
+    let services = ServicesAPI.shared
     // MARK: - LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let vc1 = createTabBarItem(tabBarTitle: "Chat", vc: ChatViewController(), tabBarImage: "chat")
-        let vc2 = createTabBarItem(tabBarTitle: "Profile", vc: ChatViewController(), tabBarImage: "user")
+        let vc1 = createTabBarItem(tabBarTitle: "Chat", vc: ChatViewController(services: services), tabBarImage: "chat")
+        let vc2 = createTabBarItem(tabBarTitle: "Profile", vc: ProfileTableViewController(), tabBarImage: "user")
         viewControllers = [vc1, vc2]
     }
     
-  
 }
 
 // MARK: - Private Methods
