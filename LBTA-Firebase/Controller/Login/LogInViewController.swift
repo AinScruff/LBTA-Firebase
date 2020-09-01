@@ -14,12 +14,16 @@ class LogInViewController: UIViewController {
     
     // MARK: - Properties
     
-    private let validation: LogInValidationService
+    fileprivate let validation: LogInValidationService
+    fileprivate let userService: UserService
+    fileprivate let defaults = UserDefaults.standard
+    fileprivate let auth = Constants.API.AUTH_REF
     
     // MARK: - Initialization
     
-    init(validation: LogInValidationService) {
+    init(validation: LogInValidationService, userService: UserService) {
         self.validation = validation
+        self.userService = userService
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -213,22 +217,27 @@ extension LogInViewController {
             let email = try validation.isEmailValid(emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines))
             let password = try validation.isPasswordValid( passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines))
                 
-            Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
-                
-                UIView.transition(with: sender, duration: 0.1, options: .curveEaseInOut, animations: {
-                    sender.backgroundColor = UIColor(hex: "#F6820DFF")
-                    sender.isEnabled = true
-                })
-                
+            auth.signIn(withEmail: email, password: password) { (result, error) in
+            
                 if error != nil {
                     self.showError(message: "Invalid Email or Password!", sender: sender)
                 } else {
-                    self.saveToKeyChain(email, password)
-                    self.emailTextField.text?.removeAll()
-                    self.passwordTextField.text?.removeAll()
-                    let vc = TabBarViewController()
-                    vc.modalPresentationStyle = .fullScreen
-                    self.present(vc, animated: false, completion: nil)
+                    self.userService.fetchCurrentUserData(userID: self.auth.currentUser?.uid) { user in
+                        
+                        UserProfileCache.save(user)
+                       
+                        let vc = TabBarViewController()
+                        vc.modalPresentationStyle = .fullScreen
+                        self.present(vc, animated: false, completion: nil)
+                        
+                        self.emailTextField.text?.removeAll()
+                        self.passwordTextField.text?.removeAll()
+                        
+                        UIView.transition(with: sender, duration: 0.1, options: .curveEaseInOut, animations: {
+                            sender.backgroundColor = UIColor(hex: "#F6820DFF")
+                            sender.isEnabled = true
+                        })
+                    }
                 }
             }
             
