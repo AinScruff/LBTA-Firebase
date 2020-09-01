@@ -11,9 +11,9 @@ import UIKit
 class UserChatTableViewCell: UITableViewCell {
     
     // MARK: - Properties
- 
+    
     // MARK: - View Elements
-    var profileImageView: UIImageView = {
+    fileprivate var profileImageView: UIImageView = {
         let img = UIImageView(image: UIImage(systemName: "textformat.size"))
         
         img.contentMode = .scaleAspectFill
@@ -21,7 +21,7 @@ class UserChatTableViewCell: UITableViewCell {
         return img
     }()
     
-    var nameLabel: UILabel = {
+    fileprivate var nameLabel: UILabel = {
         var nl = UILabel()
         
         nl.font = UIFont(name: "Helvetica", size: 17)
@@ -31,7 +31,7 @@ class UserChatTableViewCell: UITableViewCell {
         return nl
     }()
     
-    var chatLabel: UILabel = {
+    fileprivate var chatLabel: UILabel = {
         var cl = UILabel()
         
         cl.font = UIFont(name: "Helvetica", size: 13)
@@ -42,7 +42,7 @@ class UserChatTableViewCell: UITableViewCell {
     }()
     
    
-    // MARK: - Init
+    // MARK: - Initialization
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -53,7 +53,6 @@ class UserChatTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         
@@ -61,12 +60,12 @@ class UserChatTableViewCell: UITableViewCell {
         chatLabel.sizeToFit()
         profileImageView.setRounded(borderColor: UIColor.black.cgColor)
     }
-    
+
 }
 // MARK: - Constraints
 extension UserChatTableViewCell {
     
-    func configureCell() {
+    fileprivate func configureCell() {
         let stackView = UIStackView(arrangedSubviews: [nameLabel, chatLabel])
         
         stackView.axis = .vertical
@@ -79,8 +78,21 @@ extension UserChatTableViewCell {
         profileImageView.anchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, paddingTop: 5, paddingLeading: 5, paddingBottom: 5, width: 50)
         
         stackView.anchor(top: topAnchor, leading: profileImageView.trailingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 5, paddingLeading: 5, paddingBottom: 5, paddingTrailing: 5)
-       
     }
-
     
+}
+// MARK: - Methods
+extension UserChatTableViewCell {
+    
+    func populateCell(user: User) {
+        
+        if let imageURL = user.imageURL {
+            ImageService.getImage(withURL: imageURL) { image in
+                self.profileImageView.image = image
+            }
+        }
+        
+        self.nameLabel.text = user.name
+        self.chatLabel.text = "ASDAHISDADS"
+    }
 }
