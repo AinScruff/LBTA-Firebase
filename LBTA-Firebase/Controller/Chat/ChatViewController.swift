@@ -16,9 +16,9 @@ class ChatViewController: UIViewController {
     let userID = Constants.API.AUTH_REF.currentUser?.uid
     var user = [User]()
     
-    let services: ServicesAPI
+    let services: UserService
     
-    init(services: ServicesAPI) {
+    init(services: UserService) {
         self.services = services
         super.init(nibName: nil, bundle: nil)
     }
@@ -36,7 +36,7 @@ class ChatViewController: UIViewController {
         return table
     }()
     
-    let tableFooter: UIView = {
+    fileprivate let tableFooter: UIView = {
         let tf = UIView(frame: .zero)
         
         tf.backgroundColor = .white
@@ -55,7 +55,7 @@ class ChatViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        //tableView.tableFooterView = tableFooter
+        tableView.tableFooterView = tableFooter
     }
     
 }
@@ -95,9 +95,8 @@ extension ChatViewController {
     fileprivate func fetchUsers(_ userID: String?) {
         services.fetchFriendData(userID: userID) { (user) in
             self.user.append(user)
-            
+
             self.tableView.reloadData()
         }
-        
     }
 }
