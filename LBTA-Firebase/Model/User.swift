@@ -8,13 +8,13 @@
 
 import Foundation
 
-struct User {
+struct User: Codable {
     var uid: String?
     var name: String?
-    var imageURL: String?
+    var imageURL: URL?
     var imageName: String?
     
-    init(uid: String? = nil, name: String? = nil, imageURL: String? = nil , imageName: String? = nil) {
+    init(uid: String? = nil, name: String? = nil, imageURL: URL? = nil , imageName: String? = nil) {
         self.uid = uid
         self.name = name
         self.imageURL = imageURL
