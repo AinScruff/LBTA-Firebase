@@ -15,9 +15,11 @@ class InitialViewController: UIViewController {
     // MARK: - Properties
     
     let validation = LogInValidationService.shared
-    let services = ServicesAPI.shared
+    let services = UserService.shared
+    
+    let authRef = Constants.API.AUTH_REF
     let keyRef = Constants.Keys.KEYCHAIN_REF
-      
+  
     let emailKey = Constants.Keys.EMAIL
     let passwordKey = Constants.Keys.PASSWORD
   
@@ -26,18 +28,19 @@ class InitialViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = .systemBlue
-       
     }
     
     override func viewDidAppear(_ animated: Bool) {
-       if let email = keyRef.get(emailKey), let password = keyRef.get(passwordKey) {
-           login(email, password)
+        var vc: UIViewController
+        
+        if authRef.currentUser != nil {
+            vc = TabBarViewController()
         } else {
-            let vc = LogInViewController(validation: validation)
-            vc.modalPresentationStyle = .fullScreen
-            self.present(vc, animated: false)
+            vc = LogInViewController(validation: validation, userService: services)
         }
         
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: false)
     }
     
     // MARK: - Methods
