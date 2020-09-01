@@ -18,8 +18,7 @@ extension ChatViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId) as! UserChatTableViewCell
         
-        cell.chatLabel.text = "OIDHAOISDOASODA"
-        cell.nameLabel.text = user[indexPath.row].name
+        cell.populateCell(user: user[indexPath.row])
         
         return cell
     }
