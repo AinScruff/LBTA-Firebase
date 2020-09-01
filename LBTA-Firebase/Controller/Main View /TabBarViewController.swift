@@ -12,14 +12,14 @@ class TabBarViewController: UITabBarController {
     
     // MARK: - Properties
     
-    let services = ServicesAPI.shared
+    let services = UserService.shared
     // MARK: - LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let vc1 = createTabBarItem(tabBarTitle: "Chat", vc: ChatViewController(services: services), tabBarImage: "chat")
-        let vc2 = createTabBarItem(tabBarTitle: "Profile", vc: ProfileTableViewController(), tabBarImage: "user")
+        let vc2 = createTabBarItem(tabBarTitle: "Profile", vc: ProfileTableViewController(services: services), tabBarImage: "user")
         viewControllers = [vc1, vc2]
     }
     
