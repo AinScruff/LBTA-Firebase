@@ -12,7 +12,7 @@
 		89206A2724EA5981009C2323 /* ChatViewController+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89206A2624EA5981009C2323 /* ChatViewController+UITableView.swift */; };
 		89206A2924EA5AB3009C2323 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89206A2824EA5AB3009C2323 /* User.swift */; };
 		89206A2B24EA6CC6009C2323 /* UserChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89206A2A24EA6CC6009C2323 /* UserChatTableViewCell.swift */; };
-		89206A2D24EA893D009C2323 /* ServicesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89206A2C24EA893D009C2323 /* ServicesAPI.swift */; };
+		89206A2D24EA893D009C2323 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89206A2C24EA893D009C2323 /* UserService.swift */; };
 		8950149224F7EF3900FF46C6 /* SignUpValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8950149124F7EF3900FF46C6 /* SignUpValidationService.swift */; };
 		8950149524F7F1CC00FF46C6 /* EnumConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8950149424F7F1CC00FF46C6 /* EnumConstant.swift */; };
 		8950149724F7F9EC00FF46C6 /* LogInValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8950149624F7F9EC00FF46C6 /* LogInValidationService.swift */; };
@@ -36,6 +36,8 @@
 		89AE9455248A942300629B1A /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AE9454248A942300629B1A /* UIColor+Extension.swift */; };
 		89C3132F24D8544300143E48 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C3132E24D8544300143E48 /* TabBarViewController.swift */; };
 		89DF5DDF24CC7D1C008D1DC6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 89DF5DDE24CC7D1C008D1DC6 /* GoogleService-Info.plist */; };
+		89E7DB3524FE899C0052DD57 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E7DB3424FE899C0052DD57 /* ImageService.swift */; };
+		89E7DB3824FE940A0052DD57 /* ProfileHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E7DB3724FE940A0052DD57 /* ProfileHeaderTableViewCell.swift */; };
 		89F0355B24BF3DD100B78910 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F0355A24BF3DD100B78910 /* UIImageView+Extension.swift */; };
 		89F6023724F166F70053CA7F /* ValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F6023624F166F70053CA7F /* ValidationService.swift */; };
 		BF7B21D74BB7600B90036A33 /* Pods_LBTA_FirebaseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C1C78F0314F9C902BDCFFE2 /* Pods_LBTA_FirebaseTests.framework */; };
@@ -67,7 +69,7 @@
 		89206A2624EA5981009C2323 /* ChatViewController+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatViewController+UITableView.swift"; sourceTree = "<group>"; };
 		89206A2824EA5AB3009C2323 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		89206A2A24EA6CC6009C2323 /* UserChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChatTableViewCell.swift; sourceTree = "<group>"; };
-		89206A2C24EA893D009C2323 /* ServicesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesAPI.swift; sourceTree = "<group>"; };
+		89206A2C24EA893D009C2323 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		8950149124F7EF3900FF46C6 /* SignUpValidationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpValidationService.swift; sourceTree = "<group>"; };
 		8950149424F7F1CC00FF46C6 /* EnumConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumConstant.swift; sourceTree = "<group>"; };
 		8950149624F7F9EC00FF46C6 /* LogInValidationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInValidationService.swift; sourceTree = "<group>"; };
@@ -97,6 +99,8 @@
 		89AE9454248A942300629B1A /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		89C3132E24D8544300143E48 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		89DF5DDE24CC7D1C008D1DC6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		89E7DB3424FE899C0052DD57 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
+		89E7DB3724FE940A0052DD57 /* ProfileHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		89F0355A24BF3DD100B78910 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		89F6023624F166F70053CA7F /* ValidationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationService.swift; sourceTree = "<group>"; };
 		8C1C78F0314F9C902BDCFFE2 /* Pods_LBTA_FirebaseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LBTA_FirebaseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -173,7 +177,8 @@
 		8950149824F8006A00FF46C6 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				89206A2C24EA893D009C2323 /* ServicesAPI.swift */,
+				89206A2C24EA893D009C2323 /* UserService.swift */,
+				89E7DB3424FE899C0052DD57 /* ImageService.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -326,6 +331,7 @@
 			isa = PBXGroup;
 			children = (
 				89206A2524EA58CB009C2323 /* Chat */,
+				89E7DB3624FE91DB0052DD57 /* Profile */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -360,6 +366,14 @@
 				89DF5DDE24CC7D1C008D1DC6 /* GoogleService-Info.plist */,
 			);
 			path = "Google Plist";
+			sourceTree = "<group>";
+		};
+		89E7DB3624FE91DB0052DD57 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				89E7DB3724FE940A0052DD57 /* ProfileHeaderTableViewCell.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		A159C8AA5C5EDBE898160871 /* Pods */ = {
@@ -614,7 +628,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				89206A2D24EA893D009C2323 /* ServicesAPI.swift in Sources */,
+				89206A2D24EA893D009C2323 /* UserService.swift in Sources */,
 				89A97AEB24893A3800DDF070 /* LBTA_Firebase.xcdatamodeld in Sources */,
 				89A97AE124893A3800DDF070 /* AppDelegate.swift in Sources */,
 				89206A2B24EA6CC6009C2323 /* UserChatTableViewCell.swift in Sources */,
@@ -622,6 +636,7 @@
 				89AE9451248A7A3A00629B1A /* LogInViewController.swift in Sources */,
 				8950149E24F814B300FF46C6 /* ProfileTableViewController.swift in Sources */,
 				89206A2924EA5AB3009C2323 /* User.swift in Sources */,
+				89E7DB3824FE940A0052DD57 /* ProfileHeaderTableViewCell.swift in Sources */,
 				89A97B1C24893D8800DDF070 /* InitialViewController.swift in Sources */,
 				8950149524F7F1CC00FF46C6 /* EnumConstant.swift in Sources */,
 				89F6023724F166F70053CA7F /* ValidationService.swift in Sources */,
@@ -637,6 +652,7 @@
 				899E655824D8572400B5D64A /* ChatViewController.swift in Sources */,
 				89C3132F24D8544300143E48 /* TabBarViewController.swift in Sources */,
 				8951D0A92498FF9700B25BC8 /* Utilities.swift in Sources */,
+				89E7DB3524FE899C0052DD57 /* ImageService.swift in Sources */,
 				89AE9455248A942300629B1A /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
