@@ -18,7 +18,7 @@ class UserService {
     
     // MARK: - Methods
     
-    func fetchCurrentUserData(userID: String?, completion: @escaping (User) -> Void) {
+    func fetchUserData(userID: String?, completion: @escaping (User?) -> Void) {
         
         if let id = userID {
             db.collection("users").document(id).getDocument { (querySnapshot, err) in
@@ -34,19 +34,21 @@ class UserService {
             }
         } else {
             print("User not found")
+            completion(nil)
         }
     }
     
-    func fetchFriendData(userID: String?, completion: @escaping (User) -> Void) {
+    func fetchFriendData(userID: String?, completion: @escaping (User?) -> Void) {
   
         if let id = userID {
             db.collection("users").document(id).collection("friends").getDocuments { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
+                    completion(nil)
                 } else {
                     for document in querySnapshot!.documents {
                         let friendRef = document.get("friendRef") as! DocumentReference
-                
+                        
                         friendRef.addSnapshotListener { (snap, err) in
                             if let err = err {
                                 print("Error fetching user documents: \(err)")
@@ -70,6 +72,7 @@ class UserService {
             }
         } else {
             print("User Not logged in!")
+            completion(nil)
         }
     
     }
