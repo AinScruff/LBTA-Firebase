@@ -19,6 +19,7 @@ class ProfileTableViewController: UITableViewController {
     
     var user = User()
     var options = ["My Profile", "Sign Out"]
+    
     // MARK: - View Elements
     
     let headerCellID = "headerCell"
@@ -34,10 +35,10 @@ class ProfileTableViewController: UITableViewController {
     
     // MARK: - Initialization
     
-    let services: UserService
+    let userService: UserService
     
-    init(services: UserService) {
-        self.services = services
+    init(userService: UserService) {
+        self.userService = userService
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -157,8 +158,11 @@ extension ProfileTableViewController {
             if let savedUser = UserProfileCache.get() {
                 user = savedUser
             } else {
-                services.fetchCurrentUserData(userID: uid) { user in
-                    self.user = user
+                userService.fetchUserData(userID: uid) { user in
+                    
+                    if let user = user {
+                        self.user = user
+                    }
                     self.tableView.reloadData()
                 }
             }

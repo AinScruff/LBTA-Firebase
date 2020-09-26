@@ -222,16 +222,16 @@ extension LogInViewController {
                 if error != nil {
                     self.showError(message: "Invalid Email or Password!", sender: sender)
                 } else {
-                    self.userService.fetchCurrentUserData(userID: self.auth.currentUser?.uid) { user in
+                    self.userService.fetchUserData(userID: self.auth.currentUser?.uid) { [weak self] user in
                         
                         UserProfileCache.save(user)
                        
                         let vc = TabBarViewController()
                         vc.modalPresentationStyle = .fullScreen
-                        self.present(vc, animated: false, completion: nil)
+                        self?.present(vc, animated: false, completion: nil)
                         
-                        self.emailTextField.text?.removeAll()
-                        self.passwordTextField.text?.removeAll()
+                        self?.emailTextField.text?.removeAll()
+                        self?.passwordTextField.text?.removeAll()
                         
                         UIView.transition(with: sender, duration: 0.1, options: .curveEaseInOut, animations: {
                             sender.backgroundColor = UIColor(hex: "#F6820DFF")
