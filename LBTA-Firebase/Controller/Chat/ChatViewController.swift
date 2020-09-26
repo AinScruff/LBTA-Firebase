@@ -14,18 +14,9 @@ class ChatViewController: UIViewController {
     // MARK: - Properties
     let cellId = "cell"
     let userID = Constants.API.AUTH_REF.currentUser?.uid
-    var user = [User]()
     
-    let services: UserService
-    
-    init(services: UserService) {
-        self.services = services
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    var userDict = [String : UserMessage]()
+    var userArray = [UserMessage]()
     
     // MARK: - View Elements
     let tableView: UITableView = {
@@ -43,13 +34,30 @@ class ChatViewController: UIViewController {
         
         return tf
     }()
+    
+    // MARK: - Initialization
+    
+    let userService: UserService
+    let msgService: MessageService
+    
+    init(userService: UserService, msgService: MessageService) {
+        self.userService = userService
+        self.msgService = msgService
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureNavBar()
         configureTableView()
-        fetchUsers(userID)
+        fetchUsers()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -92,11 +100,27 @@ extension ChatViewController {
 // MARK: - Methods
 extension ChatViewController {
     
-    fileprivate func fetchUsers(_ userID: String?) {
-        services.fetchFriendData(userID: userID) { (user) in
-            self.user.append(user)
-
-            self.tableView.reloadData()
+    fileprivate func fetchUsers() {
+        
+        if let uid = userID {
+            msgService.fetchUserChat(currUserID: uid) { [weak self] userMessage in
+                
+                if let userMessage = userMessage {
+                    self?.userDict.updateValue(userMessage, forKey: userMessage.user.name!)
+                    self?.userArray.append(userMessage)
+                }
+                
+                self?.tableView.reloadData()
+            }
+        } else {
+            self.view.window?.rootViewController?.dismiss(animated: false, completion: nil)
         }
     }
+    
+    fileprivate func fetchMessages(_ useriD: String) {
+        
+        
+    }
 }
+
+// CHECK INTERNET CONNECTION https://www.youtube.com/watch?v=uEJzc81oCk4

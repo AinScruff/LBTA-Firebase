@@ -12,13 +12,13 @@ import Firebase
 // MARK: - UITableView DataSource
 extension ChatViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return user.count
+        return userArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId) as! UserChatTableViewCell
         
-        cell.populateCell(user: user[indexPath.row])
+        cell.populateCell(with: userArray[indexPath.row])
         
         return cell
     }
