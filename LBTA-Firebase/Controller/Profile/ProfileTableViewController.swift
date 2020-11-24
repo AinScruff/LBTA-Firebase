@@ -148,6 +148,9 @@ extension ProfileTableViewController {
         for action in actions {
             alert.addAction(action)
         }
+
+        // Added this to fix Apple Bug. More info: https://stackoverflow.com/questions/55653187/swift-default-alertviewcontroller-breaking-constraints
+        alert.view.addSubview(UIView())
         
         self.present(alert, animated: true, completion: nil)
     }
