@@ -22,6 +22,7 @@ class UserService {
         
         if let id = userID {
             db.collection("users").document(id).getDocument { (querySnapshot, err) in
+                
                 if let dict = querySnapshot?.data() {
                     
                     let uid = dict["uid"] as! String
@@ -30,10 +31,11 @@ class UserService {
                     let imageName = dict["imageName"] as! String
                   
                     completion(User(uid: uid, name: name, imageURL: URL(string: imageURL), imageName: imageName))
+                } else {
+                    completion(nil)
                 }
             }
         } else {
-            print("User not found")
             completion(nil)
         }
     }
