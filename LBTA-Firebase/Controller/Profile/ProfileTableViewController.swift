@@ -8,13 +8,11 @@
 
 import UIKit
 import Firebase
-import KeychainSwift
 
 class ProfileTableViewController: UITableViewController {
     
     // MARK: - Properties
     let defaults = UserDefaults.standard
-    let keychain = Constants.Keys.KEYCHAIN_REF
     let auth = Constants.API.AUTH_REF
     
     var user = User()

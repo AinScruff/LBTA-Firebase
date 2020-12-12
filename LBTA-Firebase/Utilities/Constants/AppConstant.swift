@@ -8,7 +8,6 @@
 
 import Foundation
 import Firebase
-import KeychainSwift
 
 struct Constants {
     
@@ -17,12 +16,4 @@ struct Constants {
         static let AUTH_REF = Auth.auth()
     }
     
-    struct Keys {
-        static let KEYCHAIN_REF = KeychainSwift()
-        static let EMAIL = "email"
-        static let PASSWORD = "password"
-        static let KEY_PREFIX = "testKeychain"
-    }
-    
-
 }

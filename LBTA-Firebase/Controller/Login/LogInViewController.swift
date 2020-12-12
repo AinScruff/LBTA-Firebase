@@ -8,7 +8,6 @@
 
 import UIKit
 import FirebaseAuth
-import KeychainSwift
 
 class LogInViewController: UIViewController {
     
@@ -180,11 +179,7 @@ extension LogInViewController {
             sender.isEnabled = true
         })
     }
-    
-    fileprivate func saveToKeyChain(_ email: String, _ password: String) {
-        Constants.Keys.KEYCHAIN_REF.set(email, forKey: Constants.Keys.EMAIL, withAccess: .accessibleWhenUnlocked)
-        Constants.Keys.KEYCHAIN_REF.set(password, forKey: Constants.Keys.PASSWORD, withAccess: .accessibleWhenUnlocked)
-    }
+
 }
 
 // MARK: - Button Methods

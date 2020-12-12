@@ -8,7 +8,6 @@
 
 import UIKit
 import Firebase
-import KeychainSwift
 
 class InitialViewController: UIViewController {
 
@@ -18,11 +17,7 @@ class InitialViewController: UIViewController {
     let services = UserService.shared
     
     let authRef = Constants.API.AUTH_REF
-    let keyRef = Constants.Keys.KEYCHAIN_REF
-  
-    let emailKey = Constants.Keys.EMAIL
-    let passwordKey = Constants.Keys.PASSWORD
-  
+
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
