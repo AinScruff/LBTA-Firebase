@@ -18,38 +18,40 @@ class UserChatTableViewCell: UITableViewCell {
         
         img.contentMode = .scaleAspectFill
         img.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        
         return img
     }()
     
     fileprivate var nameLabel: UILabel = {
-        var nl = UILabel()
+        var label = UILabel()
         
-        nl.font = UIFont(name: "Helvetica", size: 17)
-        nl.textColor = .black
-        nl.numberOfLines = 0
+        label.font = UIFont(name: "Helvetica", size: 17)
+        label.textColor = .black
+        label.numberOfLines = 0
      
-        return nl
+        return label
     }()
     
     fileprivate var chatLabel: UILabel = {
-        var cl = UILabel()
+        var label = UILabel()
         
-        cl.font = UIFont(name: "Helvetica", size: 13)
-        cl.textColor = .systemGray2
-        cl.numberOfLines = 0
+        label.font = UIFont(name: "Helvetica", size: 13)
+        label.textColor = .systemGray2
+        label.numberOfLines = 0
         
-        return cl
+        return label
     }()
     
     fileprivate var dateLabel: UILabel = {
-        var dl = UILabel()
+        var label = UILabel()
         
-        dl.font = UIFont(name: "Helvetica", size: 13)
-        dl.textColor = .systemGray2
-        dl.numberOfLines = 0
+        label.font = UIFont(name: "Helvetica", size: 13)
+        label.textColor = .systemGray2
+        label.numberOfLines = 0
         
-        return dl
+        return label
     }()
+    
     // MARK: - Initialization
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -92,6 +94,7 @@ extension UserChatTableViewCell {
     }
     
 }
+
 // MARK: - Methods
 extension UserChatTableViewCell {
     
@@ -113,7 +116,6 @@ extension UserChatTableViewCell {
         }
             
     }
-    
 
     fileprivate func checkDate(_ date: Date) -> String {
         

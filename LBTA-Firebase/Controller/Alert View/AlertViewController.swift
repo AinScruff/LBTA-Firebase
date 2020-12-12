@@ -40,37 +40,37 @@ class AlertViewController: UIViewController {
     private let navBarView = UIView()
     
     private let alertLabel: UILabel = {
-        let al = UILabel()
+        let label = UILabel()
         
-        al.textColor = .white
-        al.font = UIFont(name: "Helvetica-Bold", size: 19)
-        al.textAlignment = .center
+        label.textColor = .white
+        label.font = UIFont(name: "Helvetica-Bold", size: 19)
+        label.textAlignment = .center
         
-        return al
+        return label
     }()
     
     private let errorLabel: UILabel = {
-        let el = UILabel()
+        let label = UILabel()
         
-        el.textColor = .black
-        el.font = UIFont(name: "Helvetica", size: 17)
-        el.textAlignment = .center
-        el.numberOfLines = 0
+        label.textColor = .black
+        label.font = UIFont(name: "Helvetica", size: 17)
+        label.textAlignment = .center
+        label.numberOfLines = 0
       
-        return el
+        return label
     }()
     
     private lazy var dismissButton: UIButton = {
         
-        let bb = UIButton(type: .system)
+        let button = UIButton(type: .system)
     
-        bb.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
-        bb.tintColor = .white
-        bb.clipsToBounds = true
-        bb.contentMode = .scaleAspectFill
-        bb.setBackgroundImage(#imageLiteral(resourceName: "cross"), for: .normal)
+        button.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
+        button.tintColor = .white
+        button.clipsToBounds = true
+        button.contentMode = .scaleAspectFill
+        button.setBackgroundImage(#imageLiteral(resourceName: "cross"), for: .normal)
         
-        return bb
+        return button
     }()
     
     // MARK: - Lifecycle

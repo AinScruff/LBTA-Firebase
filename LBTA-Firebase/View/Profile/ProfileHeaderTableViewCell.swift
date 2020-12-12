@@ -22,14 +22,14 @@ class ProfileHeaderTableViewCell: UITableViewCell {
     }()
     
     fileprivate var nameLabel: UILabel = {
-        var nl = UILabel()
+        var label = UILabel()
         
-        nl.font = UIFont(name: "Helvetica-Bold", size: 20)
-        nl.textColor = .black
-        nl.numberOfLines = 0
-        nl.textAlignment = .center
+        label.font = UIFont(name: "Helvetica-Bold", size: 20)
+        label.textColor = .black
+        label.numberOfLines = 0
+        label.textAlignment = .center
         
-        return nl
+        return label
     }()
     
     // MARK: - Initialization

@@ -11,6 +11,7 @@ import Firebase
 
 // MARK: - UITableView DataSource
 extension ChatViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return userArray.count
     }

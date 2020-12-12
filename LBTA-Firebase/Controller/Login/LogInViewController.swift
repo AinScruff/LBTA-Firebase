@@ -42,61 +42,60 @@ class LogInViewController: UIViewController {
     }()
     
     fileprivate let emailTextField: UITextField = {
-        let et = UITextField()
+        let textField = UITextField()
         
-        et.font = UIFont(name: "Helvetica", size: 17)
-        et.textColor = .white
-        et.keyboardType = .emailAddress
-        et.attributedPlaceholder = NSAttributedString(string: "Email",
+        textField.font = UIFont(name: "Helvetica", size: 17)
+        textField.textColor = .white
+        textField.keyboardType = .emailAddress
+        textField.attributedPlaceholder = NSAttributedString(string: "Email",
                                                       attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
-        et.borderStyle = .none
-        et.withImage(direction: .Left, image: #imageLiteral(resourceName: "email"), backgroundColor: .clear, colorSeparator: .clear, colorBorder: .clear)
-        et.clearButtonMode = .whileEditing
-        et.autocapitalizationType = .none
+        textField.borderStyle = .none
+        textField.withImage(direction: .Left, image: #imageLiteral(resourceName: "email"), backgroundColor: .clear, colorSeparator: .clear, colorBorder: .clear)
+        textField.clearButtonMode = .whileEditing
+        textField.autocapitalizationType = .none
         
-        return et
+        return textField
     }()
     
     fileprivate let passwordTextField: UITextField = {
-        let pt = UITextField()
+        let textField = UITextField()
         
-        pt.font = UIFont(name: "Helvetic", size: 17)
-        pt.textColor = .white
-        //et.delegate = self
-        pt.isSecureTextEntry = true
-        pt.attributedPlaceholder = NSAttributedString(string: "Password",
+        textField.font = UIFont(name: "Helvetic", size: 17)
+        textField.textColor = .white
+        textField.isSecureTextEntry = true
+        textField.attributedPlaceholder = NSAttributedString(string: "Password",
                                                       attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         
-        pt.borderStyle = .none
-        pt.withImage(direction: .Left, image: #imageLiteral(resourceName: "lock"), backgroundColor: .clear, colorSeparator: .clear, colorBorder: .clear)
-        pt.clearButtonMode = .whileEditing
+        textField.borderStyle = .none
+        textField.withImage(direction: .Left, image: #imageLiteral(resourceName: "lock"), backgroundColor: .clear, colorSeparator: .clear, colorBorder: .clear)
+        textField.clearButtonMode = .whileEditing
         
-        return pt
+        return textField
     }()
     
     fileprivate let logInButton: UIButton = {
-        let lb = UIButton(type: .system)
+        let button = UIButton(type: .system)
         
-        lb.backgroundColor = UIColor(hex: "#F6820DFF")
-        lb.layer.cornerRadius = 5
-        lb.titleLabel?.font = UIFont(name: "Helvetica", size: 17)
-        lb.setTitleColor(.white, for: .normal)
-        lb.setTitle("Log In", for: .normal)
-        lb.addTarget(self, action: #selector(logIn), for: .touchUpInside)
+        button.backgroundColor = UIColor(hex: "#F6820DFF")
+        button.layer.cornerRadius = 5
+        button.titleLabel?.font = UIFont(name: "Helvetica", size: 17)
+        button.setTitleColor(.white, for: .normal)
+        button.setTitle("Log In", for: .normal)
+        button.addTarget(self, action: #selector(logIn), for: .touchUpInside)
         
-        return lb
+        return button
     }()
     
     fileprivate let signUpButton: UIButton = {
-        let sb = UIButton(type: .system)
+        let button = UIButton(type: .system)
         let attributedTitle = NSMutableAttributedString(string: "Don't Have an Account? ", attributes: [NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 15)!, NSAttributedString.Key.foregroundColor: UIColor.white])
         
         attributedTitle.append(NSAttributedString(string: "Sign Up", attributes: [NSAttributedString.Key.font: UIFont(name: "Helvetica-Bold", size: 15)!,NSAttributedString.Key.foregroundColor: UIColor.white]))
         
-        sb.setAttributedTitle(attributedTitle, for: .normal)
-        sb.addTarget(self, action: #selector(openSignUpView), for: .touchUpInside)
+        button.setAttributedTitle(attributedTitle, for: .normal)
+        button.addTarget(self, action: #selector(openSignUpView), for: .touchUpInside)
         
-        return sb
+        return button
     }()
     
     // MARK: - Lifecycle

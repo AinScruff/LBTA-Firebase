@@ -76,87 +76,87 @@ class SignUpViewController: UIViewController {
     }()
     
     fileprivate let tapToChangeLabel: UILabel = {
-        let tl = UILabel()
+        let label = UILabel()
         
-        tl.font = UIFont(name: "Helvetica-Bold", size: 13)
-        tl.textColor = .white
-        tl.text = "Tap to Change"
-        tl.textAlignment = .center
+        label.font = UIFont(name: "Helvetica-Bold", size: 13)
+        label.textColor = .white
+        label.text = "Tap to Change"
+        label.textAlignment = .center
         
-        return tl
+        return label
     }()
     
     fileprivate let emailTextField: UITextField = {
-        let et = UITextField()
+        let textField = UITextField()
         
-        et.font = UIFont(name: "Helvetica", size: 17)
-        et.keyboardType = .emailAddress
-        et.attributedPlaceholder = NSAttributedString(string: "Email",
+        textField.font = UIFont(name: "Helvetica", size: 17)
+        textField.keyboardType = .emailAddress
+        textField.attributedPlaceholder = NSAttributedString(string: "Email",
                                                       attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
-        et.borderStyle = .none
-        et.withImage(direction: .Left, image: #imageLiteral(resourceName: "email"), backgroundColor: .clear, colorSeparator: .clear, colorBorder: .clear)
-        et.clearButtonMode = .whileEditing
-        et.autocapitalizationType = .none
-        et.textColor = .white
+        textField.borderStyle = .none
+        textField.withImage(direction: .Left, image: #imageLiteral(resourceName: "email"), backgroundColor: .clear, colorSeparator: .clear, colorBorder: .clear)
+        textField.clearButtonMode = .whileEditing
+        textField.autocapitalizationType = .none
+        textField.textColor = .white
         
-        return et
+        return textField
     }()
     
     fileprivate let passwordTextField: UITextField = {
-        let pt = UITextField()
+        let textField = UITextField()
         
-        pt.font = UIFont(name: "Helvetic", size: 17)
-        pt.textColor = .white
-        pt.isSecureTextEntry = true
-        pt.attributedPlaceholder = NSAttributedString(string: "Password",
+        textField.font = UIFont(name: "Helvetic", size: 17)
+        textField.textColor = .white
+        textField.isSecureTextEntry = true
+        textField.attributedPlaceholder = NSAttributedString(string: "Password",
                                                       attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         
-        pt.borderStyle = .none
-        pt.withImage(direction: .Left, image: #imageLiteral(resourceName: "lock"), backgroundColor: .clear, colorSeparator: .clear, colorBorder: .clear)
-        pt.clearButtonMode = .whileEditing
+        textField.borderStyle = .none
+        textField.withImage(direction: .Left, image: #imageLiteral(resourceName: "lock"), backgroundColor: .clear, colorSeparator: .clear, colorBorder: .clear)
+        textField.clearButtonMode = .whileEditing
      
-        return pt
+        return textField
     }()
     
     fileprivate let nameTextField: UITextField = {
-        let nt = UITextField()
+        let textField = UITextField()
         
-        nt.font = UIFont(name: "Helvetic", size: 17)
-        nt.textColor = .white
-        nt.attributedPlaceholder = NSAttributedString(string: "Name",
+        textField.font = UIFont(name: "Helvetic", size: 17)
+        textField.textColor = .white
+        textField.attributedPlaceholder = NSAttributedString(string: "Name",
                                                       attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
-        nt.borderStyle = .none
-        nt.withImage(direction: .Left, image: #imageLiteral(resourceName: "user"), backgroundColor: .clear, colorSeparator: .clear, colorBorder: .clear)
-        nt.clearButtonMode = .whileEditing
-        nt.autocapitalizationType = .none
+        textField.borderStyle = .none
+        textField.withImage(direction: .Left, image: #imageLiteral(resourceName: "user"), backgroundColor: .clear, colorSeparator: .clear, colorBorder: .clear)
+        textField.clearButtonMode = .whileEditing
+        textField.autocapitalizationType = .none
 
         
-        return nt
+        return textField
     }()
     
     fileprivate let signUpButton: UIButton = {
-        let sb = UIButton(type: .system)
+        let button = UIButton(type: .system)
         
-        sb.backgroundColor = UIColor(hex: "#F6820DFF")
-        sb.layer.cornerRadius = 5
-        sb.titleLabel?.font = UIFont(name: "Helvetica", size: 17)
-        sb.setTitleColor(.white, for: .normal)
-        sb.setTitle("Sign Up", for: .normal)
-        sb.addTarget(self, action: #selector(signUp), for: .touchUpInside)
+        button.backgroundColor = UIColor(hex: "#F6820DFF")
+        button.layer.cornerRadius = 5
+        button.titleLabel?.font = UIFont(name: "Helvetica", size: 17)
+        button.setTitleColor(.white, for: .normal)
+        button.setTitle("Sign Up", for: .normal)
+        button.addTarget(self, action: #selector(signUp), for: .touchUpInside)
         
-        return sb
+        return button
     }()
     
     fileprivate let logInButton: UIButton = {
-        let lb = UIButton(type: .system)
+        let button = UIButton(type: .system)
         let attributedTitle = NSMutableAttributedString(string: "Already have an Account? ", attributes: [NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 15)!, NSAttributedString.Key.foregroundColor: UIColor.white])
         
         attributedTitle.append(NSAttributedString(string: "Log In", attributes: [NSAttributedString.Key.font: UIFont(name: "Helvetica-Bold", size: 15)!,NSAttributedString.Key.foregroundColor: UIColor.white]))
         
-        lb.setAttributedTitle(attributedTitle, for: .normal)
-        lb.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
+        button.setAttributedTitle(attributedTitle, for: .normal)
+        button.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
         
-        return lb
+        return button
     }()
     
     fileprivate let passwordValidationView: UIView = {

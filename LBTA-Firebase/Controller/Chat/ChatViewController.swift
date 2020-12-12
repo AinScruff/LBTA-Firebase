@@ -20,19 +20,19 @@ class ChatViewController: UIViewController {
     
     // MARK: - View Elements
     let tableView: UITableView = {
-        let table = UITableView(frame: .zero, style: .plain)
+        let tableView = UITableView(frame: .zero, style: .plain)
         
-        table.backgroundColor = .white
+        tableView.backgroundColor = .white
         
-        return table
+        return tableView
     }()
     
     fileprivate let tableFooter: UIView = {
-        let tf = UIView(frame: .zero)
+        let tableFooter = UIView(frame: .zero)
         
-        tf.backgroundColor = .white
+        tableFooter.backgroundColor = .white
         
-        return tf
+        return tableFooter
     }()
     
     // MARK: - Initialization
@@ -117,7 +117,7 @@ extension ChatViewController {
         }
     }
     
-    fileprivate func fetchMessages(_ useriD: String) {
+    fileprivate func observeIncomingMessages(_ userID: String) {
         
         
     }

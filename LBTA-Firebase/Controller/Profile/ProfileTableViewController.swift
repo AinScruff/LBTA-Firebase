@@ -26,11 +26,11 @@ class ProfileTableViewController: UITableViewController {
     let cellId = "cell"
     
     fileprivate let tableFooter: UIView = {
-        let tf = UIView(frame: .zero)
+        let tableFooter = UIView(frame: .zero)
         
-        tf.backgroundColor = .white
+        tableFooter.backgroundColor = .white
         
-        return tf
+        return tableFooter
     }()
     
     // MARK: - Initialization
@@ -139,6 +139,7 @@ extension ProfileTableViewController {
         }
     }
 }
+
 // MARK: - Methods
 extension ProfileTableViewController {
     
