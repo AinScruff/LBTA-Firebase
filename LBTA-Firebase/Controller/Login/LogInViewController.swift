@@ -159,19 +159,6 @@ extension LogInViewController {
         view.addGestureRecognizer(Tap)
     }
     
-    fileprivate func validateTextField() -> String? {
-        
-        if emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
-            return "Email is required!"
-        }
-        
-        if passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
-            return "Password is required!"
-        }
-        
-        return nil
-    }
-    
     fileprivate func showError(message: String, sender: UIButton) {
         self.present(Utilities.showErrorView(title: "Log In Error", message: message), animated: true, completion: nil)
         UIView.transition(with: sender, duration: 0.1, options: .curveEaseInOut, animations: {
