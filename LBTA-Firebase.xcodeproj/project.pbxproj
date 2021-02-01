@@ -20,6 +20,7 @@
 		8950149E24F814B300FF46C6 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8950149D24F814B300FF46C6 /* ProfileTableViewController.swift */; };
 		8951D0A92498FF9700B25BC8 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8951D0A82498FF9700B25BC8 /* Utilities.swift */; };
 		8951D0AC24991AC700B25BC8 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8951D0AB24991AC700B25BC8 /* AlertViewController.swift */; };
+		8962623F25C846D2003F2522 /* ValidationServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8962623E25C846D2003F2522 /* ValidationServiceTest.swift */; };
 		897355C825111C38008755FF /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897355C725111C38008755FF /* Date+Extension.swift */; };
 		8994686124989C7100AE15FD /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8994686024989C7100AE15FD /* SignUpViewController.swift */; };
 		899E655824D8572400B5D64A /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899E655724D8572400B5D64A /* ChatViewController.swift */; };
@@ -81,6 +82,7 @@
 		8950149D24F814B300FF46C6 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		8951D0A82498FF9700B25BC8 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		8951D0AB24991AC700B25BC8 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		8962623E25C846D2003F2522 /* ValidationServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationServiceTest.swift; sourceTree = "<group>"; };
 		897355C725111C38008755FF /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		8994686024989C7100AE15FD /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		899E655724D8572400B5D64A /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				89A97AFA24893A3A00DDF070 /* LBTA_FirebaseTests.swift */,
+				8962623E25C846D2003F2522 /* ValidationServiceTest.swift */,
 				89A97AFC24893A3A00DDF070 /* Info.plist */,
 			);
 			path = "LBTA-FirebaseTests";
@@ -677,6 +680,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8962623F25C846D2003F2522 /* ValidationServiceTest.swift in Sources */,
 				89A97AFB24893A3A00DDF070 /* LBTA_FirebaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
