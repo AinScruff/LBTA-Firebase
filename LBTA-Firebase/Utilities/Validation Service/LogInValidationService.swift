@@ -13,12 +13,12 @@ class LogInValidationService {
     // MARK: - Properties
     
     static let shared = LogInValidationService()
-    
+    private let validation = ValidationService.shared
     // MARK: - Methods
     
     func isEmailValid(_ email: String) throws -> String {
         do {
-            return try ValidationService.isEmailEmpty(email)
+            return try validation.isEmailEmpty(email)
         } catch ValidationError.emptyEmailField{
             throw ValidationError.emptyEmailField
         }
@@ -26,7 +26,7 @@ class LogInValidationService {
     
     func isPasswordValid(_ password: String) throws -> String {
         do {
-            return try ValidationService.isPasswordEmpty(password)
+            return try validation.isPasswordEmpty(password)
         } catch ValidationError.emptyPasswordField {
             throw ValidationError.emptyPasswordField
         }

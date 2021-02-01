@@ -14,12 +14,14 @@ class SignUpValidationService {
     
     static let shared = SignUpValidationService()
     
+    private let validation = ValidationService.shared
+    
     // MARK: - Methods
     
     func isNameValid(_ name: String) throws -> String {
         
         do {
-            let name = try ValidationService.isNameEmpty(name)
+            let name = try validation.isNameEmpty(name)
             
             return name
         } catch ValidationError.emptyNameField {
@@ -31,9 +33,9 @@ class SignUpValidationService {
     func isEmailValid(_ email: String) throws -> String {
         
         do {
-            var email = try ValidationService.isEmailEmpty(email)
+            var email = try validation.isEmailEmpty(email)
             
-            email = try ValidationService.isEmailFormatValid(email)
+            email = try validation.isEmailFormatValid(email)
             
             return email
         } catch ValidationError.emptyEmailField{
@@ -47,9 +49,9 @@ class SignUpValidationService {
     func isPasswordValid(_ password: String) throws -> String {
         
         do {
-            var password = try ValidationService.isPasswordEmpty(password)
+            var password = try validation.isPasswordEmpty(password)
             
-            password = try ValidationService.isPasswordFormatValid(password)
+            password = try validation.isPasswordFormatValid(password)
             
             return password
         } catch ValidationError.emptyPasswordField {
