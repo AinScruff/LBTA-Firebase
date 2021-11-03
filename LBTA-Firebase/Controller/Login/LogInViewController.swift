@@ -149,6 +149,10 @@ extension LogInViewController {
         signUpButton.anchor(width: 250, height: 30)
         signUpButton.centerAnchor(centerX: view.centerXAnchor)
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 }
 
 // MARK: - Methods
